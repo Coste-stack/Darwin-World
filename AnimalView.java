@@ -6,17 +6,17 @@ public class AnimalView {
     private Color fillColor;
     private StackPane stackPane;
 
-    public AnimalView(Color fillColor) {
+    public AnimalView(Color fillColor, float radius) {
         this.fillColor = fillColor;
-        this.createAnimal();
+        this.createAnimal(radius);
     }
 
-    private void createAnimal() {
+    private void createAnimal(float radius) {
         Circle circle = new Circle();
         circle.setFill(this.fillColor);
         circle.setCenterX(100.0f);
         circle.setCenterY(100.0f);
-        circle.setRadius(10.0f);
+        circle.setRadius(radius);
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(circle);

@@ -6,14 +6,22 @@ import javafx.scene.paint.Color;
 import javafx.geometry.Pos;
 
 public class BoardView {
-    private final double SCREEN_WIDTH;
-    private final double SCREEN_HEIGHT;
+    private final float SCREEN_WIDTH;
+    private final float SCREEN_HEIGHT;
     private Board gridMatrix;
     private TilePane gridPanel;
 
-    public BoardView(double SCREEN_WIDTH, double SCREEN_HEIGHT) {
+    public BoardView(float SCREEN_WIDTH, float SCREEN_HEIGHT) {
         this.SCREEN_WIDTH = SCREEN_WIDTH;
         this.SCREEN_HEIGHT = SCREEN_HEIGHT;
+    }
+
+    public float calcTileSize() {
+        int gridWidth = gridMatrix.getWidth();
+        int gridHeight = gridMatrix.getHeight();
+        float tileSizeWidth = (float) Math.floor(SCREEN_WIDTH / gridWidth);
+        float tileSizeHeight = (float) Math.floor(SCREEN_HEIGHT / gridHeight);
+        return Math.min(tileSizeWidth, tileSizeHeight);
     }
 
     public Scene createBoard(Board gridMatrix) {
@@ -22,13 +30,11 @@ public class BoardView {
         int gridHeight = gridMatrix.getHeight();
 
         // Determine an appropriate tile size
-        double tileSizeWidth = Math.floor(SCREEN_WIDTH / gridWidth);
-        double tileSizeHeight = Math.floor(SCREEN_HEIGHT / gridHeight);
-        double tileSize = Math.min(tileSizeWidth, tileSizeHeight);
+        float tileSize = calcTileSize();
 
         // Determine the panel sizes
-        double panelWidth = tileSize * gridWidth;
-        double panelHeight = tileSize * gridHeight;
+        float panelWidth = tileSize * gridWidth;
+        float panelHeight = tileSize * gridHeight;
 
         // Create TilePane container - to set its width, height and alignment
         StackPane container = new StackPane();
@@ -94,10 +100,21 @@ public class BoardView {
             // Re-create the tiles based on the current gridMatrix state
             for (int i = 0; i < gridWidth; i++) {
                 for (int j = 0; j < gridHeight; j++) {
+                    // Create tile
                     StackPane tile = new StackPane();
                     tile.setStyle("-fx-background-color: " +
                             toRgbString(gridMatrix.getBoardMatrix()[i][j].getFillColor()) +
                             ";");
+
+                    // If animal stackPane exists, add it to tile
+                    if (gridMatrix.getBoardMatrix()[i][j].getAnimal() != null) {
+                        AnimalView animalView = gridMatrix.getBoardMatrix()[i][j].getAnimal().getAnimalView();
+                        if (animalView != null) {
+                            tile.getChildren().add(animalView.getStackPane());
+                        }
+                    }
+
+                    // Add tile to panel
                     gridPanel.getChildren().add(tile);
                 }
             }

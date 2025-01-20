@@ -26,8 +26,8 @@ public class Application extends javafx.application.Application {
             @Override
             public void handle(ActionEvent event) {
                 // Create the grid matrix
-                int gridWidth = 64;
-                int gridHeight = 64;
+                int gridWidth = 32;
+                int gridHeight = 32;
                 Board board = new Board(gridWidth, gridHeight);
 
                 // Create the Pole at the top
@@ -45,7 +45,10 @@ public class Application extends javafx.application.Application {
                 Scene boardScene = boardView.createBoard(board);
 
                 // Create animal
-                Animal animal = new Animal(new Point(gridWidth / 2, gridHeight / 2));
+                Animal animal = new Animal(
+                        new Point(gridWidth / 2, gridHeight / 2),
+                        boardView.calcTileSize() / 2
+                );
                 board.addAnimal(animal);
                 boardView.refreshBoard();
 

@@ -4,9 +4,9 @@ public class Animal {
     private Point position;
     private AnimalView animalView;
 
-    public Animal(Point position) {
+    public Animal(Point position, float radius) {
         this.position = position;
-        this.animalView = new AnimalView(Color.RED);
+        this.animalView = new AnimalView(Color.RED, radius);
     }
 
     public Point getPosition() {
