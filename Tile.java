@@ -3,7 +3,7 @@ import javafx.scene.paint.Color;
 public class Tile {
     private Color fillColor;
 
-    public Tile(Color fillColor) {
+    public Tile(Color fillColor, Area area) {
         this.fillColor = fillColor;
     }
 

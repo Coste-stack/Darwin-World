@@ -17,14 +17,29 @@ public class Application extends javafx.application.Application {
         primaryStage.setHeight(720);
 
         // Create startButton
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Simulation");
         Button startButton = new Button();
         startButton.setText("Show Gameboard");
         // Add boardView on startButton click
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Board board = new Board(64, 64);
+                // Create the grid matrix
+                int gridWidth = 64;
+                int gridHeight = 64;
+                Board board = new Board(gridWidth, gridHeight);
+
+                // Create the Pole at the top
+                Area pole = new Pole(null, null).getArea(gridWidth, gridHeight);
+
+                // Create the Plains centered in the grid
+                Area plains = new Plains(null, null).getArea(gridWidth, gridHeight);
+
+                // Add areas to board matrix
+                board.addArea(pole);
+                board.addArea(plains);
+
+                // Create grid visualization in window
                 BoardView boardView = new BoardView(1280, 720);
                 Scene boardScene = boardView.createBoard(board);
                 primaryStage.setScene(boardScene);

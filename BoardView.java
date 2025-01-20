@@ -1,3 +1,4 @@
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
@@ -35,6 +36,7 @@ public class BoardView {
 
         // Create the TilePane
         TilePane gridPanel = new TilePane();
+        gridPanel.setOrientation(Orientation.VERTICAL);
         // Ensure no spacing between tiles
         gridPanel.setHgap(0);
         gridPanel.setVgap(0);
