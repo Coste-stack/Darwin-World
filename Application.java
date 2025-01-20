@@ -20,7 +20,10 @@ public class Application extends javafx.application.Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+                Board board = new Board(8, 8);
+                BoardView boardView = new BoardView(8, 8);
+                Scene boardScene = boardView.createBoard(board);
+                primaryStage.setScene(boardScene);
             }
         });
         StackPane root = new StackPane(); // create a layout
