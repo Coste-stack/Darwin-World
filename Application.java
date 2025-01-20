@@ -1,5 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -42,6 +43,12 @@ public class Application extends javafx.application.Application {
                 // Create grid visualization in window
                 BoardView boardView = new BoardView(1280, 720);
                 Scene boardScene = boardView.createBoard(board);
+
+                // Create animal
+                Animal animal = new Animal(new Point(gridWidth / 2, gridHeight / 2));
+                board.addAnimal(animal);
+                boardView.refreshBoard();
+
                 primaryStage.setScene(boardScene);
             }
         });

@@ -8,6 +8,8 @@ import javafx.geometry.Pos;
 public class BoardView {
     private final double SCREEN_WIDTH;
     private final double SCREEN_HEIGHT;
+    private Board gridMatrix;
+    private TilePane gridPanel;
 
     public BoardView(double SCREEN_WIDTH, double SCREEN_HEIGHT) {
         this.SCREEN_WIDTH = SCREEN_WIDTH;
@@ -15,6 +17,7 @@ public class BoardView {
     }
 
     public Scene createBoard(Board gridMatrix) {
+        this.gridMatrix = gridMatrix;
         int gridWidth = gridMatrix.getWidth();
         int gridHeight = gridMatrix.getHeight();
 
@@ -35,7 +38,7 @@ public class BoardView {
         StackPane.setAlignment(container, Pos.CENTER_RIGHT);
 
         // Create the TilePane
-        TilePane gridPanel = new TilePane();
+        this.gridPanel = new TilePane();
         gridPanel.setOrientation(Orientation.VERTICAL);
         // Ensure no spacing between tiles
         gridPanel.setHgap(0);
@@ -78,5 +81,27 @@ public class BoardView {
                 (int) (color.getRed() * 255) + "," +
                 (int) (color.getGreen() * 255) + "," +
                 (int) (color.getBlue() * 255) + ")";
+    }
+
+    public void refreshBoard() {
+        if (gridPanel != null) {
+            int gridWidth = gridMatrix.getWidth();
+            int gridHeight = gridMatrix.getHeight();
+
+            // Clear the current tiles in the gridPanel
+            gridPanel.getChildren().clear();
+
+            // Re-create the tiles based on the current gridMatrix state
+            for (int i = 0; i < gridWidth; i++) {
+                for (int j = 0; j < gridHeight; j++) {
+                    StackPane tile = new StackPane();
+                    tile.setStyle("-fx-background-color: " +
+                            toRgbString(gridMatrix.getBoardMatrix()[i][j].getFillColor()) +
+                            ";");
+                    gridPanel.getChildren().add(tile);
+                }
+            }
+        }
+
     }
 }

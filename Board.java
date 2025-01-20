@@ -12,7 +12,7 @@ public class Board {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 Color fillColor = (i + j) % 2 == 0 ? Color.GRAY : Color.BLACK;
-                Tile tile = new Tile(fillColor, null);
+                Tile tile = new Tile(fillColor);
                 this.boardMatrix[i][j] = tile;
             }
         }
@@ -31,8 +31,12 @@ public class Board {
     public void addArea(Area area) {
         for (int i = area.getTopLeft().x(); i < area.getBottomRight().x(); i++) {
             for (int j = area.getTopLeft().y(); j < area.getBottomRight().y(); j++) {
-                this.boardMatrix[i][j].setFillColor(area.getTileColor());
+                this.boardMatrix[i][j].setArea(area);
             }
         }
+    }
+
+    public void addAnimal(Animal animal) {
+        this.boardMatrix[animal.getPosition().x()][animal.getPosition().y()].setAnimal(animal);
     }
 }
