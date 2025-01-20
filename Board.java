@@ -1,17 +1,18 @@
 import javafx.scene.paint.Color;
 
 public class Board {
-    private Tile[][] boardMatrix;
-    private int x;
-    private int y;
+    private final Tile[][] boardMatrix;
+    private final int BOARD_WIDTH;
+    private final int BOARD_HEIGHT;
 
     public Board(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.BOARD_WIDTH = x;
+        this.BOARD_HEIGHT = y;
         this.boardMatrix = new Tile[x][y];
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                Tile tile = new Tile(Color.GRAY, Color.BLACK);
+                Color fillColor = (i + j) % 2 == 0 ? Color.GRAY : Color.BLACK;
+                Tile tile = new Tile(fillColor);
                 this.boardMatrix[i][j] = tile;
             }
         }
@@ -21,9 +22,9 @@ public class Board {
         return this.boardMatrix;
     }
     public int getWidth() {
-        return this.x;
+        return this.BOARD_WIDTH;
     }
     public int getHeight() {
-        return this.y;
+        return this.BOARD_HEIGHT;
     }
 }
