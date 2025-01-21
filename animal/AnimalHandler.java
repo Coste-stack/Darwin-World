@@ -30,6 +30,7 @@ public class AnimalHandler {
             int prevY = animal.getPosition().getY();
             // Change animal position based on direction
             animal.move();
+            System.out.println("Animal moved");
 
             int currX =  animal.getPosition().getX();
             int currY = animal.getPosition().getY();
@@ -38,7 +39,7 @@ public class AnimalHandler {
 
             // Adjust newX and newY to loop through the grid boundaries
             if (currX < 0) {
-                newX = board.getWidth() - currX;
+                newX = board.getWidth() + currX;
             } else if (currX >= board.getWidth()) {
                 newX = currX - board.getWidth();
             }

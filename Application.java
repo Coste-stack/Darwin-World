@@ -58,7 +58,7 @@ public class Application extends javafx.application.Application {
                 // Create animal
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
                 animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
-                animalHandler.createAnimal(new Point(0, 0));
+                //animalHandler.createAnimal(new Point(0, 0));
                 boardView.refreshBoard();
 
                 // Move animals
