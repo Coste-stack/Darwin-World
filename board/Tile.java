@@ -5,12 +5,23 @@ import area.Area;
 import javafx.scene.paint.Color;
 
 public class Tile {
+    private static final Color foodColor = Color.GREEN;
     private Color fillColor;
+
     private Animal animal;
     private Area area;
+    private boolean hasFood;
 
     public Tile(Color fillColor) {
         this.fillColor = fillColor;
+        this.hasFood = false;
+    }
+    public Tile(Color fillColor, boolean hasFood) {
+        this.fillColor = fillColor;
+        this.hasFood = hasFood;
+        if(hasFood) {
+            this.fillColor = foodColor;
+        }
     }
 
     public Color getFillColor() {
@@ -25,6 +36,18 @@ public class Tile {
     }
     public void setAnimal(Animal animal) {
         this.animal = animal;
+    }
+
+    public boolean hasFood() {
+        return this.hasFood;
+    }
+    public void setHasFood(boolean hasFood) {
+        this.hasFood = hasFood;
+        if (hasFood) {
+            this.fillColor = foodColor;
+        } else {
+            this.fillColor = area.getTileColor();
+        }
     }
 
     public Area getArea() {

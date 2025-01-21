@@ -4,6 +4,7 @@ import animal.Animal;
 import area.Area;
 
 import javafx.scene.paint.Color;
+import utils.Random;
 
 public class Board {
     private final Tile[][] boardMatrix;
@@ -43,5 +44,15 @@ public class Board {
 
     public void addAnimal(Animal animal) {
         this.boardMatrix[animal.getPosition().getX()][animal.getPosition().getY()].setAnimal(animal);
+    }
+
+    public void setFoodRandomly() {
+        for (int i = 0; i < this.BOARD_WIDTH; i++) {
+            for (int j = 0; j < this.BOARD_HEIGHT; j++) {
+                if (Random.getRandom(1, 100) <= 5) {
+                    this.boardMatrix[i][j].setHasFood(true);
+                }
+            }
+        }
     }
 }

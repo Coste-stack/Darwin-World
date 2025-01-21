@@ -30,7 +30,7 @@ public class AnimalHandler {
             int prevY = animal.getPosition().getY();
             // Change animal position based on direction
             animal.move();
-            System.out.println("Animal moved");
+            animal.rotate();
 
             int currX =  animal.getPosition().getX();
             int currY = animal.getPosition().getY();
@@ -56,6 +56,15 @@ public class AnimalHandler {
                 animal.getPosition().setX(newX);
                 animal.getPosition().setY(newY);
             }
+
+            // Check if this tile has food (add energy and remove food)
+            if (board.getBoardMatrix()[newX][newY].hasFood()) {
+                animal.addEnergy(50);
+                board.getBoardMatrix()[newX][newY].setHasFood(false);
+            }
+
+            // Log the animal properties
+            System.out.println(animalList.indexOf(animal) + " - " + animal);
 
             // Remove the animal from its previous position in the grid matrix
             board.getBoardMatrix()[prevX][prevY].setAnimal(null);

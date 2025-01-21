@@ -23,7 +23,7 @@ public abstract class Area {
         return this.tileColor;
     }
 
-    public abstract Area getArea(int gridWidth, int gridHheight);
+    public abstract Area getArea(int gridWidth, int gridHeight);
 
     public abstract String getType();
 }

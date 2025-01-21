@@ -51,6 +51,9 @@ public class Application extends javafx.application.Application {
                 board.addArea(SouthPole);
                 board.addArea(plains);
 
+                // Set food on board
+                board.setFoodRandomly();
+
                 // Create grid visualization in window
                 BoardView boardView = new BoardView(1240, 680);
                 Scene boardScene = boardView.createBoard(board);
@@ -58,7 +61,7 @@ public class Application extends javafx.application.Application {
                 // Create animal
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
                 animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
-                //animalHandler.createAnimal(new Point(0, 0));
+                animalHandler.createAnimal(new Point(0, 0));
                 boardView.refreshBoard();
 
                 // Move animals
