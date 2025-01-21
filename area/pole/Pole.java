@@ -1,5 +1,7 @@
-package area;
+package area.pole;
 
+import area.Area;
+import area.Point;
 import javafx.scene.paint.Color;
 
 public abstract class Pole extends Area {
@@ -16,6 +18,6 @@ public abstract class Pole extends Area {
 
     @Override
     public String getType() {
-        return "area.Pole - " + poleType.name();
+        return "area.pole.Pole - " + poleType.name();
     }
 }

@@ -1,6 +1,8 @@
 import animal.Animal;
 import area.*;
 
+import area.pole.NorthPole;
+import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
 import javafx.event.ActionEvent;
@@ -34,7 +36,7 @@ public class Application extends javafx.application.Application {
                 int gridHeight = 32;
                 Board board = new Board(gridWidth, gridHeight);
 
-                // Create the area.Pole at the top and bottom
+                // Create the area.pole.Pole at the top and bottom
                 Area NorthPole = new NorthPole(null, null).getArea(gridWidth, gridHeight);
                 Area SouthPole = new SouthPole(null, null).getArea(gridWidth, gridHeight);
                 // Create the area.Plains centered in the grid

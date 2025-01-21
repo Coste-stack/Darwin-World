@@ -1,4 +1,4 @@
-package area;
+package area.pole;
 
 public enum PoleType {
     NORTH,

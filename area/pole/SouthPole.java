@@ -1,4 +1,7 @@
-package area;
+package area.pole;
+
+import area.Area;
+import area.Point;
 
 public class SouthPole extends Pole {
     public SouthPole(Point topLeft, Point bottomRight) {
