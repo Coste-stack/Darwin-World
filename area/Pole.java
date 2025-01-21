@@ -2,21 +2,20 @@ package area;
 
 import javafx.scene.paint.Color;
 
-public class Pole extends Area {
-    public Pole(Point topLeft, Point bottomRight) {
-        super(topLeft, bottomRight, Color.LIGHTBLUE); // area.Pole tiles are light blue
+public abstract class Pole extends Area {
+    private final PoleType poleType;
+
+    public Pole(Point topLeft, Point bottomRight, PoleType poleType) {
+        super(topLeft, bottomRight, Color.LIGHTBLUE); // Poles are light blue
+        this.poleType = poleType;
     }
 
-    @Override
-    public Area getArea(int gridWidth, int gridHeight) {
-        return new Pole(
-                new Point(0, 0),
-                new Point(gridWidth, (int) Math.ceil((double) gridHeight / 10))
-        );
+    public PoleType getPoleType() {
+        return poleType;
     }
 
     @Override
     public String getType() {
-        return "area.Pole";
+        return "area.Pole - " + poleType.name();
     }
 }
