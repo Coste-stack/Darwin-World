@@ -12,7 +12,7 @@ public class Animal {
     public Animal(Point position, float radius) {
         this.position = position;
         this.animalView = new AnimalView(Color.RED, radius);
-        this.direction = Direction.UP; // Default direction
+        this.direction = Direction.getRandomDirection();
     }
 
     public void move() {
