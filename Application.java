@@ -1,17 +1,20 @@
-import animal.Animal;
 import animal.AnimalHandler;
 import area.*;
-
 import area.pole.NorthPole;
 import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
+import javafx.animation.Timeline;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.util.Duration;
 
 public class Application extends javafx.application.Application {
     public static void main(String[] args) {
@@ -44,12 +47,12 @@ public class Application extends javafx.application.Application {
                 Area plains = new Plains(null, null).getArea(gridWidth, gridHeight);
 
                 // Add areas to board matrix
-                board.addArea(NorthPole);
-                board.addArea(SouthPole);
-                board.addArea(plains);
+                //board.addArea(NorthPole);
+                //board.addArea(SouthPole);
+                //board.addArea(plains);
 
                 // Create grid visualization in window
-                BoardView boardView = new BoardView(1280, 720);
+                BoardView boardView = new BoardView(1240, 680);
                 Scene boardScene = boardView.createBoard(board);
 
                 // Create animal
@@ -57,6 +60,15 @@ public class Application extends javafx.application.Application {
                 animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
                 animalHandler.createAnimal(new Point(0, 0));
                 boardView.refreshBoard();
+
+                // Move animals
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+                    animalHandler.moveAnimals();
+                    boardView.refreshBoard();
+                    System.out.println("Animals moved");
+                }));
+                timeline.setCycleCount(Animation.INDEFINITE);
+                timeline.play();
 
                 primaryStage.setScene(boardScene);
             }

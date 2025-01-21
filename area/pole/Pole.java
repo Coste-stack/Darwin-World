@@ -2,6 +2,7 @@ package area.pole;
 
 import area.Area;
 import area.Point;
+
 import javafx.scene.paint.Color;
 
 public abstract class Pole extends Area {

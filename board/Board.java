@@ -2,6 +2,7 @@ package board;
 
 import animal.Animal;
 import area.Area;
+
 import javafx.scene.paint.Color;
 
 public class Board {
@@ -33,14 +34,14 @@ public class Board {
     }
 
     public void addArea(Area area) {
-        for (int i = area.getTopLeft().x(); i < area.getBottomRight().x(); i++) {
-            for (int j = area.getTopLeft().y(); j < area.getBottomRight().y(); j++) {
+        for (int i = area.getTopLeft().getX(); i < area.getBottomRight().getX(); i++) {
+            for (int j = area.getTopLeft().getY(); j < area.getBottomRight().getY(); j++) {
                 this.boardMatrix[i][j].setArea(area);
             }
         }
     }
 
     public void addAnimal(Animal animal) {
-        this.boardMatrix[animal.getPosition().x()][animal.getPosition().y()].setAnimal(animal);
+        this.boardMatrix[animal.getPosition().getX()][animal.getPosition().getY()].setAnimal(animal);
     }
 }

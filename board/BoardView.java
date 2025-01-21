@@ -1,11 +1,12 @@
 package board;
 
 import animal.AnimalView;
-import javafx.geometry.Orientation;
+
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 
 public class BoardView {
@@ -122,6 +123,5 @@ public class BoardView {
                 }
             }
         }
-
     }
 }
