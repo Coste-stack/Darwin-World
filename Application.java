@@ -5,12 +5,15 @@ import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
 
+import chart.Plot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.animation.Timeline;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -21,11 +24,15 @@ public class Application extends javafx.application.Application {
         launch(args);
     }
 
+    private static final int SCREEN_WIDTH = 1280;
+    private static final int SCREEN_HEIGHT = 720;
+
     @Override
     public void start(Stage primaryStage) {
         // Set stage properties
-        primaryStage.setWidth(1280);
-        primaryStage.setHeight(720);
+
+        primaryStage.setWidth(SCREEN_WIDTH);
+        primaryStage.setHeight(SCREEN_HEIGHT);
 
         // Create startButton
         primaryStage.setTitle("Simulation");
@@ -35,10 +42,13 @@ public class Application extends javafx.application.Application {
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                // Create plot for grid
+                Plot plot = new Plot();
+
                 // Create the grid matrix
                 int gridWidth = 32;
                 int gridHeight = 32;
-                Board board = new Board(gridWidth, gridHeight);
+                Board board = new Board(gridWidth, gridHeight, plot);
 
                 // Create the area.pole.Pole at the top and bottom
                 Area NorthPole = new NorthPole(null, null).getArea(gridWidth, gridHeight);
@@ -55,10 +65,23 @@ public class Application extends javafx.application.Application {
                 board.setFoodRandomly();
 
                 // Create grid visualization in window
-                BoardView boardView = new BoardView(1240, 680);
-                Scene boardScene = boardView.createBoard(board);
+                BoardView boardView = new BoardView(SCREEN_WIDTH / (float) 1.75, SCREEN_HEIGHT - 20);
+                StackPane boardContainer = boardView.createBoard(board);
 
-                // Create animal
+                // Create plot visualization
+                StackPane plotContainer = plot.getLineChart();
+
+                // Create a scene
+                HBox root = new HBox();
+                root.getChildren().addAll(plotContainer, boardContainer);
+
+                // Make both components scalable
+                HBox.setHgrow(plotContainer, Priority.ALWAYS);
+                HBox.setHgrow(boardContainer, Priority.ALWAYS);
+
+                Scene mainScene = new Scene(root);
+
+                // Create animals
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
                 animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
                 animalHandler.createAnimal(new Point(0, 0));
@@ -72,7 +95,7 @@ public class Application extends javafx.application.Application {
                 timeline.setCycleCount(Animation.INDEFINITE);
                 timeline.play();
 
-                primaryStage.setScene(boardScene);
+                primaryStage.setScene(mainScene);
             }
         });
         StackPane root = new StackPane(); // create a layout

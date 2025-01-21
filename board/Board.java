@@ -3,7 +3,9 @@ package board;
 import animal.Animal;
 import area.Area;
 import area.Grassfield;
+import chart.Plot;
 
+import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
 import utils.Random;
 
@@ -11,11 +13,13 @@ public class Board {
     private final Tile[][] boardMatrix;
     private final int BOARD_WIDTH;
     private final int BOARD_HEIGHT;
+    private final Plot plot;
 
-    public Board(int x, int y) {
+    public Board(int x, int y, Plot plot) {
         this.BOARD_WIDTH = x;
         this.BOARD_HEIGHT = y;
         this.boardMatrix = new Tile[x][y];
+        this.plot = plot;
         Area grassfield = new Grassfield(null, null).getArea(BOARD_WIDTH, BOARD_HEIGHT);
 
         for (int i = 0; i < x; i++) {
@@ -58,5 +62,24 @@ public class Board {
                 }
             }
         }
+    }
+
+    public void addSeriesData(int iteration, int animalAmount) {
+        // Adjust the X-axis upper bound in blocks
+        int currentXAxisUpperBound = (int) this.plot.getXAxis().getUpperBound();
+        int newXAxisUpperBound = ((iteration / 10) + 1) * 10;
+        if (newXAxisUpperBound > currentXAxisUpperBound) {
+            this.plot.getXAxis().setUpperBound(newXAxisUpperBound);
+        }
+
+        // Adjust the Y-axis upper bound in blocks
+        int currentYAxisUpperBound = (int) this.plot.getYAxis().getUpperBound();
+        int newYAxisUpperBound = ((animalAmount / 10) + 1) * 10;
+        if (newYAxisUpperBound > currentYAxisUpperBound) {
+            this.plot.getYAxis().setUpperBound(newYAxisUpperBound);
+        }
+
+        // Add data to plot
+        this.plot.getSeries().getData().add(new XYChart.Data<>(iteration, animalAmount));
     }
 }

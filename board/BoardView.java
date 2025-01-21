@@ -2,7 +2,6 @@ package board;
 
 import animal.AnimalView;
 
-import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
@@ -14,6 +13,7 @@ public class BoardView {
     private final float SCREEN_HEIGHT;
     private Board gridMatrix;
     private TilePane gridPanel;
+    private int iteration = 1;
 
     public BoardView(float SCREEN_WIDTH, float SCREEN_HEIGHT) {
         this.SCREEN_WIDTH = SCREEN_WIDTH;
@@ -28,7 +28,7 @@ public class BoardView {
         return Math.min(tileSizeWidth, tileSizeHeight);
     }
 
-    public Scene createBoard(Board gridMatrix) {
+    public StackPane createBoard(Board gridMatrix) {
         this.gridMatrix = gridMatrix;
         int gridWidth = gridMatrix.getWidth();
         int gridHeight = gridMatrix.getHeight();
@@ -79,10 +79,7 @@ public class BoardView {
         root.setPrefSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         root.setMaxSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         root.getChildren().add(container);
-
-        // Create the scene with the root StackPane
-        Scene boardScene = new Scene(root);
-        return boardScene;
+        return root;
     }
 
     // Helper method to convert JavaFX Color to CSS-compatible RGB string
@@ -101,9 +98,17 @@ public class BoardView {
             // Clear the current tiles in the gridPanel
             gridPanel.getChildren().clear();
 
+            // Collect data for plot series
+            int animalAmount = 0;
+
             // Re-create the tiles based on the current gridMatrix state
             for (int i = 0; i < gridWidth; i++) {
                 for (int j = 0; j < gridHeight; j++) {
+                    // Check data
+                    if (gridMatrix.getBoardMatrix()[i][j].getAnimal() != null) {
+
+                    }
+
                     // Create tile
                     StackPane tile = new StackPane();
                     tile.setStyle("-fx-background-color: " +
@@ -116,12 +121,17 @@ public class BoardView {
                         if (animalView != null) {
                             tile.getChildren().add(animalView.getStackPane());
                         }
+                        // Update animal data for series
+                        animalAmount++;
                     }
 
                     // Add tile to panel
                     gridPanel.getChildren().add(tile);
                 }
             }
+
+            gridMatrix.addSeriesData(iteration, animalAmount);
+            iteration++;
         }
     }
 }
