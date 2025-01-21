@@ -100,13 +100,14 @@ public class BoardView {
 
             // Collect data for plot series
             int animalAmount = 0;
+            int foodAmount = 0;
 
             // Re-create the tiles based on the current gridMatrix state
             for (int i = 0; i < gridWidth; i++) {
                 for (int j = 0; j < gridHeight; j++) {
-                    // Check data
-                    if (gridMatrix.getBoardMatrix()[i][j].getAnimal() != null) {
-
+                    // Update food data for series
+                    if (gridMatrix.getBoardMatrix()[i][j].hasFood()) {
+                        foodAmount++;
                     }
 
                     // Create tile
@@ -130,7 +131,8 @@ public class BoardView {
                 }
             }
 
-            gridMatrix.addSeriesData(iteration, animalAmount);
+            gridMatrix.addAnimalSeriesData(iteration, animalAmount);
+            gridMatrix.addFoodSeriesData(iteration, foodAmount);
             iteration++;
         }
     }

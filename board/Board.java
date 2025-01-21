@@ -64,7 +64,7 @@ public class Board {
         }
     }
 
-    public void addSeriesData(int iteration, int animalAmount) {
+    private void adjustAxisBounds(int iteration, int amount) {
         // Adjust the X-axis upper bound in blocks
         int currentXAxisUpperBound = (int) this.plot.getXAxis().getUpperBound();
         int newXAxisUpperBound = ((iteration / 10) + 1) * 10;
@@ -74,12 +74,19 @@ public class Board {
 
         // Adjust the Y-axis upper bound in blocks
         int currentYAxisUpperBound = (int) this.plot.getYAxis().getUpperBound();
-        int newYAxisUpperBound = ((animalAmount / 10) + 1) * 10;
+        int newYAxisUpperBound = ((amount / 10) + 1) * 10;
         if (newYAxisUpperBound > currentYAxisUpperBound) {
             this.plot.getYAxis().setUpperBound(newYAxisUpperBound);
         }
+    }
 
-        // Add data to plot
-        this.plot.getSeries().getData().add(new XYChart.Data<>(iteration, animalAmount));
+    public void addAnimalSeriesData(int iteration, int animalAmount) {
+        adjustAxisBounds(iteration, animalAmount);
+        this.plot.getAnimalSeries().getData().add(new XYChart.Data<>(iteration, animalAmount));
+    }
+
+    public void addFoodSeriesData(int iteration, int foodAmount) {
+        adjustAxisBounds(iteration, foodAmount);
+        this.plot.getFoodSeries().getData().add(new XYChart.Data<>(iteration, foodAmount));
     }
 }

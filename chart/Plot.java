@@ -7,7 +7,8 @@ import javafx.scene.layout.StackPane;
 
 public class Plot {
     private final LineChart<Number, Number> lineChart;
-    private final XYChart.Series<Number, Number> series;
+    private final XYChart.Series<Number, Number> animalSeries;
+    private final XYChart.Series<Number, Number> foodSeries;
     private final NumberAxis xAxis;
     private final NumberAxis yAxis;
 
@@ -23,11 +24,16 @@ public class Plot {
         // Create the LineChart
         lineChart = new LineChart<>(xAxis, yAxis);
 
-        series = new XYChart.Series<>();
-        series.setName("Animals");
+        // Create series for animal amount
+        animalSeries = new XYChart.Series<>();
+        animalSeries.setName("Animals");
+        // Create series for food amount
+        foodSeries = new XYChart.Series<>();
+        foodSeries.setName("Food");
 
         //Setting the data to Line chart
-        lineChart.getData().add(series);
+        lineChart.getData().add(animalSeries);
+        lineChart.getData().add(foodSeries);
     }
 
     public StackPane getLineChart() {
@@ -36,8 +42,12 @@ public class Plot {
         return lineChartContainer;
     }
 
-    public XYChart.Series<Number, Number> getSeries() {
-        return series;
+    public XYChart.Series<Number, Number> getAnimalSeries() {
+        return animalSeries;
+    }
+
+    public XYChart.Series<Number, Number> getFoodSeries() {
+        return foodSeries;
     }
 
     public NumberAxis getXAxis() {
