@@ -1,3 +1,5 @@
+package area;
+
 import javafx.scene.paint.Color;
 
 public abstract class Area {

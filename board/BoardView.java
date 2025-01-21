@@ -1,3 +1,6 @@
+package board;
+
+import animal.AnimalView;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;

@@ -1,6 +1,13 @@
+import animal.Animal;
+import area.Area;
+import area.Plains;
+import area.Point;
+
+import area.Pole;
+import board.Board;
+import board.BoardView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -30,10 +37,10 @@ public class Application extends javafx.application.Application {
                 int gridHeight = 32;
                 Board board = new Board(gridWidth, gridHeight);
 
-                // Create the Pole at the top
+                // Create the area.Pole at the top
                 Area pole = new Pole(null, null).getArea(gridWidth, gridHeight);
 
-                // Create the Plains centered in the grid
+                // Create the area.Plains centered in the grid
                 Area plains = new Plains(null, null).getArea(gridWidth, gridHeight);
 
                 // Add areas to board matrix

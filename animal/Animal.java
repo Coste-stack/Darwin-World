@@ -1,3 +1,6 @@
+package animal;
+
+import area.Point;
 import javafx.scene.paint.Color;
 
 public class Animal {

@@ -1,8 +1,10 @@
+package area;
+
 import javafx.scene.paint.Color;
 
 public class Pole extends Area {
     public Pole(Point topLeft, Point bottomRight) {
-        super(topLeft, bottomRight, Color.LIGHTBLUE); // Pole tiles are light blue
+        super(topLeft, bottomRight, Color.LIGHTBLUE); // area.Pole tiles are light blue
     }
 
     @Override
@@ -15,6 +17,6 @@ public class Pole extends Area {
 
     @Override
     public String getType() {
-        return "Pole";
+        return "area.Pole";
     }
 }

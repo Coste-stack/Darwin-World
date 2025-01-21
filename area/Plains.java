@@ -1,3 +1,5 @@
+package area;
+
 import javafx.scene.paint.Color;
 
 public class Plains extends Area {
@@ -7,12 +9,12 @@ public class Plains extends Area {
 
     @Override
     public Area getArea(int gridWidth, int gridHeight) {
-        // Create a "Plains" area centered in the grid.
+        // Create a "area.Plains" area centered in the grid.
         int centerX = gridWidth / 2;
         int centerY = gridHeight / 2;
 
-        int offsetWidth = gridWidth / 4;  // Plains take up half the width
-        int offsetHeight = gridHeight / 4; // Plains take up half the height
+        int offsetWidth = gridWidth / 4;  // area.Plains take up half the width
+        int offsetHeight = gridHeight / 4; // area.Plains take up half the height
 
         return new Plains(
                 new Point(centerX - offsetWidth, centerY - offsetHeight),
@@ -22,6 +24,6 @@ public class Plains extends Area {
 
     @Override
     public String getType() {
-        return "Plains";
+        return "area.Plains";
     }
 }

@@ -1,3 +1,7 @@
+package board;
+
+import animal.Animal;
+import area.Area;
 import javafx.scene.paint.Color;
 
 public class Tile {
