@@ -47,9 +47,9 @@ public class Application extends javafx.application.Application {
                 Area plains = new Plains(null, null).getArea(gridWidth, gridHeight);
 
                 // Add areas to board matrix
-                //board.addArea(NorthPole);
-                //board.addArea(SouthPole);
-                //board.addArea(plains);
+                board.addArea(NorthPole);
+                board.addArea(SouthPole);
+                board.addArea(plains);
 
                 // Create grid visualization in window
                 BoardView boardView = new BoardView(1240, 680);
@@ -65,7 +65,6 @@ public class Application extends javafx.application.Application {
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
                     animalHandler.moveAnimals();
                     boardView.refreshBoard();
-                    System.out.println("Animals moved");
                 }));
                 timeline.setCycleCount(Animation.INDEFINITE);
                 timeline.play();

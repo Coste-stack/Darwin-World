@@ -26,26 +26,40 @@ public class AnimalHandler {
 
     public void moveAnimals() {
         for (Animal animal : animalList) {
-            // Get current position of the animal
-            Point currentPosition = animal.getPosition();
+            int prevX = animal.getPosition().getX();
+            int prevY = animal.getPosition().getY();
+            // Change animal position based on direction
+            animal.move();
 
-            // Calculate the new position (move X+1 for debugging)
-            int newX = currentPosition.getX() + 1;
-            int newY = currentPosition.getY();
+            int currX =  animal.getPosition().getX();
+            int currY = animal.getPosition().getY();
+            int newX = currX;
+            int newY = currY;
 
-            // Ensure the new position is within the grid boundaries
-            if (newX >= 0 && newX < board.getWidth() && newY >= 0 && newY < board.getHeight()) {
-                // Remove the animal from its current position in the grid matrix
-                board.getBoardMatrix()[currentPosition.getX()][currentPosition.getY()].setAnimal(null);
-
-                // Update the animal's position
-                currentPosition.setX(newX);
-                currentPosition.setY(newY);
-
-                // Place the animal in the new position in the grid matrix
-                board.getBoardMatrix()[newX][newY].setAnimal(animal);
+            // Adjust newX and newY to loop through the grid boundaries
+            if (currX < 0) {
+                newX = board.getWidth() - currX;
+            } else if (currX >= board.getWidth()) {
+                newX = currX - board.getWidth();
             }
-        }
 
+            if (currY < 0) {
+                newY = board.getHeight() + currY;
+            } else if (currY >= board.getHeight()) {
+                newY = currY - board.getHeight();
+            }
+
+            // Check if position should change
+            if (newX != currX || newY != currY) {
+                // Update the animal's position
+                animal.getPosition().setX(newX);
+                animal.getPosition().setY(newY);
+            }
+
+            // Remove the animal from its previous position in the grid matrix
+            board.getBoardMatrix()[prevX][prevY].setAnimal(null);
+            // Place the animal in the new position in the grid matrix
+            board.getBoardMatrix()[newX][newY].setAnimal(animal);
+        }
     }
 }
