@@ -1,4 +1,5 @@
 import animal.Animal;
+import animal.AnimalHandler;
 import area.*;
 
 import area.pole.NorthPole;
@@ -52,11 +53,9 @@ public class Application extends javafx.application.Application {
                 Scene boardScene = boardView.createBoard(board);
 
                 // Create animal
-                Animal animal = new Animal(
-                        new Point(gridWidth / 2, gridHeight / 2),
-                        boardView.calcTileSize() / 2
-                );
-                board.addAnimal(animal);
+                AnimalHandler animalHandler = new AnimalHandler(board, boardView);
+                animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
+                animalHandler.createAnimal(new Point(0, 0));
                 boardView.refreshBoard();
 
                 primaryStage.setScene(boardScene);
