@@ -9,7 +9,7 @@ public abstract class Pole extends Area {
     private final PoleType poleType;
 
     public Pole(Point topLeft, Point bottomRight, PoleType poleType) {
-        super(topLeft, bottomRight, Color.LIGHTBLUE); // Poles are light blue
+        super(topLeft, bottomRight, Color.LIGHTBLUE);
         this.poleType = poleType;
     }
 
