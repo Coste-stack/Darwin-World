@@ -78,7 +78,7 @@ public class AnimalHandler {
 
             // Check if this tile has food (add energy and remove food)
             if (board.getBoardMatrix()[newX][newY].hasFood()) {
-                animal.addEnergy(50);
+                animal.addEnergy(animal.getEnergyFoodGain());
                 board.getBoardMatrix()[newX][newY].setHasFood(false);
             }
 
@@ -86,10 +86,10 @@ public class AnimalHandler {
             System.out.println(animalList.indexOf(animal) + " - " + animal);
 
             // Remove the animal from its previous position in the grid matrix
-            board.getBoardMatrix()[prevX][prevY].setAnimal(null);
+            board.getBoardMatrix()[prevX][prevY].removeAnimal(animal);
             if (animal.isAlive()) {
                 // Place the animal in the new position in the grid matrix
-                board.getBoardMatrix()[newX][newY].setAnimal(animal);
+                board.getBoardMatrix()[newX][newY].addAnimal(animal);
             } else {
                 animalsToRemove.add(animal);
             }

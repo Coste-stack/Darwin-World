@@ -4,20 +4,25 @@ import animal.Animal;
 import area.Area;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tile {
     private static final Color foodColor = Color.GREEN;
     private Color fillColor;
     private boolean isFoodPreferred;
 
-    private Animal animal;
+    private List<Animal> animalList;
     private Area area;
     private boolean hasFood;
 
     public Tile(Color fillColor) {
+        animalList = new ArrayList<>();
         this.fillColor = fillColor;
         this.hasFood = false;
     }
     public Tile(Color fillColor, boolean hasFood) {
+        animalList = new ArrayList<>();
         this.fillColor = fillColor;
         this.hasFood = hasFood;
         if(hasFood) {
@@ -32,11 +37,17 @@ public class Tile {
         this.fillColor = fillColor;
     }
 
-    public Animal getAnimal() {
-        return this.animal;
+    public List<Animal> getAnimalList() {
+        return this.animalList;
     }
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
+    public void addAnimal(Animal animal) {
+        this.animalList.add(animal);
+    }
+    public void removeAnimal(Animal animal) {
+        this.animalList.remove(animal);
+    }
+    public void clearAnimalList() {
+        this.animalList.clear();
     }
 
     public boolean hasFood() {

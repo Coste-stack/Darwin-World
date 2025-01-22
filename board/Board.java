@@ -53,7 +53,7 @@ public class Board {
     }
 
     public void addAnimal(Animal animal) {
-        this.boardMatrix[animal.getPosition().getX()][animal.getPosition().getY()].setAnimal(animal);
+        this.boardMatrix[animal.getPosition().getX()][animal.getPosition().getY()].addAnimal(animal);
     }
 
     public void setFoodPreferredTiles() {

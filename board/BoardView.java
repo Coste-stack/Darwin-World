@@ -1,5 +1,6 @@
 package board;
 
+import animal.Animal;
 import animal.AnimalView;
 
 import javafx.scene.layout.StackPane;
@@ -105,29 +106,33 @@ public class BoardView {
             // Re-create the tiles based on the current gridMatrix state
             for (int i = 0; i < gridWidth; i++) {
                 for (int j = 0; j < gridHeight; j++) {
+                    Tile tile = gridMatrix.getBoardMatrix()[i][j];
                     // Update food data for series
-                    if (gridMatrix.getBoardMatrix()[i][j].hasFood()) {
+                    if (tile.hasFood()) {
                         foodAmount++;
                     }
 
                     // Create tile
-                    StackPane tile = new StackPane();
-                    tile.setStyle("-fx-background-color: " +
+                    StackPane tileView = new StackPane();
+                    tileView.setStyle("-fx-background-color: " +
                             toRgbString(gridMatrix.getBoardMatrix()[i][j].getFillColor()) +
                             ";");
 
-                    // If animal stackPane exists, add it to tile
-                    if (gridMatrix.getBoardMatrix()[i][j].getAnimal() != null) {
-                        AnimalView animalView = gridMatrix.getBoardMatrix()[i][j].getAnimal().getAnimalView();
-                        if (animalView != null) {
-                            tile.getChildren().add(animalView.getStackPane());
+
+                    for (Animal animal : tile.getAnimalList()) {
+                        // If animal stackPane exists, add it to tile
+                        if (animal != null) {
+                            AnimalView animalView = animal.getAnimalView();
+                            if (animalView != null) {
+                                tileView.getChildren().add(animalView.getStackPane());
+                            }
+                            // Update animal data for series
+                            animalAmount++;
                         }
-                        // Update animal data for series
-                        animalAmount++;
                     }
 
                     // Add tile to panel
-                    gridPanel.getChildren().add(tile);
+                    gridPanel.getChildren().add(tileView);
                 }
             }
 

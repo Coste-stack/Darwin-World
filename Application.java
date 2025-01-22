@@ -18,6 +18,7 @@ import javafx.animation.Timeline;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.util.Duration;
+import utils.Random;
 
 public class Application extends javafx.application.Application {
     public static void main(String[] args) {
@@ -62,7 +63,7 @@ public class Application extends javafx.application.Application {
                 board.addArea(plains);
                 // Set food on board
                 board.setFoodPreferredTiles();
-                //board.setFoodRandomly();
+                board.setFoodRandomly();
 
                 // Create grid visualization in window
                 BoardView boardView = new BoardView(SCREEN_WIDTH / (float) 1.75, SCREEN_HEIGHT - 20);
@@ -85,6 +86,9 @@ public class Application extends javafx.application.Application {
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
                 animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
                 animalHandler.createAnimal(new Point(0, 0));
+                for (int i = 0; i < 10; i++) {
+                    animalHandler.createAnimal(new Point(Random.getRandom(0, board.getWidth()-1), Random.getRandom(0, board.getHeight()-1)));
+                }
                 boardView.refreshBoard();
 
                 // Move animals

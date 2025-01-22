@@ -1,5 +1,7 @@
 package area;
 
+import utils.Random;
+
 public class Point {
     private int x;
     private int y;

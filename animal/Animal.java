@@ -15,6 +15,7 @@ public class Animal {
     private static final int DEFAULT_ENERGY_CONSUMPTION = 25;
     private static final int MAX_ENERGY_CONSUMPTION = 50;
     private static final int MIN_ENERGY_CONSUMPTION = 10;
+    private static final int ENERGY_FOOD_GAIN = 50;
 
     private boolean isAlive;
 
@@ -68,6 +69,9 @@ public class Animal {
     }
     public int getMinEnergyConsumption() {
         return MIN_ENERGY_CONSUMPTION;
+    }
+    public int getEnergyFoodGain() {
+        return ENERGY_FOOD_GAIN;
     }
 
     public void addEnergy(int energy) {
