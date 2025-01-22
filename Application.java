@@ -60,8 +60,8 @@ public class Application extends javafx.application.Application {
                 board.addArea(NorthPole);
                 board.addArea(SouthPole);
                 board.addArea(plains);
-
                 // Set food on board
+                board.setFoodPreferredTiles();
                 board.setFoodRandomly();
 
                 // Create grid visualization in window

@@ -14,6 +14,8 @@ public class Board {
     private final int BOARD_WIDTH;
     private final int BOARD_HEIGHT;
     private final Plot plot;
+    private final static int primaryFoodChance = 60; // Chance for food on foodPrefered tiles
+    private final static int secondaryFoodChance = 10; // Chance for food on non foodPrefered tiles
 
     public Board(int x, int y, Plot plot) {
         this.BOARD_WIDTH = x;
@@ -54,11 +56,32 @@ public class Board {
         this.boardMatrix[animal.getPosition().getX()][animal.getPosition().getY()].setAnimal(animal);
     }
 
+    public void setFoodPreferredTiles() {
+        for (int i = 0; i < this.BOARD_WIDTH; i++) {
+            for (int j = 0; j < this.BOARD_HEIGHT; j++) {
+                Tile tile = this.boardMatrix[i][j];
+                tile.setFoodPrefered(false);
+                if (Random.getRandom(1, 100) <= tile.getArea().getFoodPreferedTileChance()) {
+                    tile.setFoodPrefered(true);
+                }
+            }
+        }
+    }
+
     public void setFoodRandomly() {
         for (int i = 0; i < this.BOARD_WIDTH; i++) {
             for (int j = 0; j < this.BOARD_HEIGHT; j++) {
-                if (Random.getRandom(1, 100) <= 5) {
-                    this.boardMatrix[i][j].setHasFood(true);
+                Tile tile = this.boardMatrix[i][j];
+                if (!tile.hasFood()) {
+                    if (tile.isFoodPrefered()) {
+                        if (Random.getRandom(1, 100) <= primaryFoodChance) {
+                            tile.setHasFood(true);
+                        }
+                    } else {
+                        if (Random.getRandom(1, 100) <= secondaryFoodChance) {
+                            tile.setHasFood(true);
+                        }
+                    }
                 }
             }
         }

@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 public class Tile {
     private static final Color foodColor = Color.GREEN;
     private Color fillColor;
+    private boolean isFoodPrefered;
 
     private Animal animal;
     private Area area;
@@ -56,5 +57,12 @@ public class Tile {
     public void setArea(Area area) {
         this.area = area;
         this.fillColor = area.getTileColor();
+    }
+
+    public boolean isFoodPrefered() {
+        return this.isFoodPrefered;
+    }
+    public void setFoodPrefered(boolean isFoodPrefered) {
+        this.isFoodPrefered = isFoodPrefered;
     }
 }
