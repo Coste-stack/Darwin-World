@@ -3,6 +3,7 @@ package board;
 import animal.Animal;
 import animal.AnimalView;
 
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
@@ -113,21 +114,26 @@ public class BoardView {
                     }
 
                     // Create tile
-                    StackPane tileView = new StackPane();
-                    tileView.setStyle("-fx-background-color: " +
-                            toRgbString(gridMatrix.getBoardMatrix()[i][j].getFillColor()) +
-                            ";");
+                    GridPane tileView = new GridPane();
+                    tileView.setStyle("-fx-background-color: " + toRgbString(gridMatrix.getBoardMatrix()[i][j].getFillColor()) + ";");
 
-
+                    int row = 0;
+                    int column = 0;
                     for (Animal animal : tile.getAnimalList()) {
-                        // If animal stackPane exists, add it to tile
-                        if (animal != null) {
-                            AnimalView animalView = animal.getAnimalView();
-                            if (animalView != null) {
-                                tileView.getChildren().add(animalView.getStackPane());
+                        AnimalView animalView = animal.getAnimalView();
+                        if (animalView != null) {
+                            // if on the tile is more than one animal - decrease its size to allow up to 4
+                            if (tile.getAnimalList().size() > 1) {
+                                animalView.setRadius(animalView.getDefaultRadius() / 2);
+                            } else {
+                                animalView.setRadius(animalView.getDefaultRadius());
                             }
-                            // Update animal data for series
-                            animalAmount++;
+                            tileView.add(animalView.getStackPane(), column, row);
+                            column++;
+                            if (column >= 2) {
+                                column = 0;
+                                row++;
+                            }
                         }
                     }
 

@@ -13,7 +13,7 @@ public class Animal {
     private static final int DEFAULT_ENERGY = 100;
     private int energyConsumption;
     private static final int DEFAULT_ENERGY_CONSUMPTION = 25;
-    private static final int MAX_ENERGY_CONSUMPTION = 50;
+    private static final int MAX_ENERGY_CONSUMPTION = 20;
     private static final int MIN_ENERGY_CONSUMPTION = 10;
     private static final int ENERGY_FOOD_GAIN = 50;
 

@@ -7,14 +7,20 @@ import javafx.scene.shape.Circle;
 public class AnimalView {
     private Color fillColor;
     private StackPane stackPane;
+    private Circle circle;
+
+    private float radius;
+    private final float radiusDefault;
 
     public AnimalView(Color fillColor, float radius) {
         this.fillColor = fillColor;
-        this.createAnimal(radius);
+        this.radius = radius;
+        this.radiusDefault = radius;
+        this.createAnimal();
     }
 
-    private void createAnimal(float radius) {
-        Circle circle = new Circle();
+    private void createAnimal() {
+        circle = new Circle();
         circle.setFill(this.fillColor);
         circle.setCenterX(100.0f);
         circle.setCenterY(100.0f);
@@ -33,5 +39,15 @@ public class AnimalView {
     }
     public StackPane getStackPane() {
         return this.stackPane;
+    }
+    public float getRadius() {
+        return this.radius;
+    }
+    public void setRadius(float radius) {
+        this.radius = radius;
+        circle.setRadius(radius);
+    }
+    public float getDefaultRadius() {
+        return radiusDefault;
     }
 }
