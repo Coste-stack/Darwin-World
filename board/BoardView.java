@@ -122,17 +122,20 @@ public class BoardView {
                     for (Animal animal : tile.getAnimalList()) {
                         AnimalView animalView = animal.getAnimalView();
                         if (animalView != null) {
-                            // if on the tile is more than one animal - decrease its size to allow up to 4
-                            if (tile.getAnimalList().size() > 1) {
-                                animalView.setRadius(animalView.getDefaultRadius() / 2);
-                            } else {
-                                animalView.setRadius(animalView.getDefaultRadius());
-                            }
-                            tileView.add(animalView.getStackPane(), column, row);
-                            column++;
-                            if (column >= 2) {
-                                column = 0;
-                                row++;
+                            // Display animalView in tile
+                            if (row < 2) {
+                                // if on the tile is more than one animal - decrease its size to allow up to 4
+                                if (tile.getAnimalList().size() > 1) {
+                                    animalView.scaleView(this.calcTileSize() / 4);
+                                } else {
+                                    animalView.scaleView(this.calcTileSize() / 2);
+                                }
+                                tileView.add(animalView.getStackPane(), column, row);
+                                column++;
+                                if (column >= 2) {
+                                    column = 0;
+                                    row++;
+                                }
                             }
                         }
                     }

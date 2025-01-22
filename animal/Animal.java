@@ -11,6 +11,8 @@ public class Animal {
 
     private int energy;
     private static final int DEFAULT_ENERGY = 100;
+    private static final int MAX_ENERGY = 100;
+    private static final int MIN_ENERGY = 0;
     private int energyConsumption;
     private static final int DEFAULT_ENERGY_CONSUMPTION = 25;
     private static final int MAX_ENERGY_CONSUMPTION = 20;
@@ -20,7 +22,7 @@ public class Animal {
     private boolean isAlive;
 
     public Animal(Point position, float radius) {
-        this.animalView = new AnimalView(Color.RED, radius);
+        this.animalView = new AnimalView(this, Color.RED, radius);
         this.position = position;
         this.direction = Direction.getRandomDirection();
         this.energy = DEFAULT_ENERGY;
@@ -57,6 +59,21 @@ public class Animal {
         return this.energy;
     }
 
+    public int getMaxEnergy() {
+        return MAX_ENERGY;
+    }
+
+    public int getMinEnergy() {
+        return MIN_ENERGY;
+    }
+
+    public float getEnergyPercentage() {
+        if (this.getMaxEnergy() == 0) {
+            return 0;
+        }
+        return (float) this.energy / (float) MAX_ENERGY;
+    }
+
     public int getEnergyConsumption() {
         return this.energyConsumption;
     }
@@ -78,6 +95,10 @@ public class Animal {
         // add it
         if (energy >= 0) {
             this.energy += energy;
+        }
+        // normalize the energy
+        if (this.energy > MAX_ENERGY) {
+            this.energy = MAX_ENERGY;
         }
     }
 
@@ -107,6 +128,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal: " + this.position.toString() + "; energy: " + this.energy + " consumption: " + this.energyConsumption;
+        return "Animal: " + this.position.toString() + "; energy: " + this.energy + " consumption: " + this.energyConsumption + " %: " + this.getEnergyPercentage();
     }
 }
