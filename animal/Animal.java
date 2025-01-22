@@ -5,22 +5,25 @@ import area.Point;
 import javafx.scene.paint.Color;
 
 public class Animal {
-    private Point position;         // Logical grid position of the animal
+    private AnimalView animalView; // Visual representation of the animal
+    private Point position; // Grid position of the animal
+    private Direction direction; // Direction facing the front of the animal
+    private static final int DEFAULT_ENERGY = 100;
     private int energy;
-    private AnimalView animalView;  // Visual representation of the animal
-    private Direction direction;    // Direction facing the front of the animal
+    private boolean isAlive;
 
     public Animal(Point position, float radius) {
-        this.position = position;
-        this.energy = 1000;
         this.animalView = new AnimalView(Color.RED, radius);
+        this.position = position;
         this.direction = Direction.getRandomDirection();
+        this.energy = DEFAULT_ENERGY;
+        isAlive = true;
     }
 
     public void move() {
         this.position.setX(this.position.getX() + direction.getDeltaX());
         this.position.setY(this.position.getY() + direction.getDeltaY());
-        this.energy -= 25;
+        this.subtractEnergy(5);
     }
 
     public void rotate() {
@@ -55,13 +58,22 @@ public class Animal {
 
     public void subtractEnergy(int energy) {
         // subtract it
-        if (energy < 0) {
+        if (energy > 0) {
             this.energy -= energy;
         }
         // normalize current energy
         if (this.energy < 0) {
             this.energy = 0;
         }
+        // check if no energy - dead
+        if (this.energy == 0) {
+            isAlive = false;
+            animalView = null;
+        }
+    }
+
+    public boolean isAlive() {
+        return isAlive;
     }
 
     public AnimalView getAnimalView() {

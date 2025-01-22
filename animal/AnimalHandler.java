@@ -25,6 +25,10 @@ public class AnimalHandler {
     }
 
     public void moveAnimals() {
+        // Temporary list to store animals to be removed
+        // (cant remove in the middle of iterations)
+        List<Animal> animalsToRemove = new ArrayList<>();
+
         for (Animal animal : animalList) {
             int prevX = animal.getPosition().getX();
             int prevY = animal.getPosition().getY();
@@ -68,8 +72,15 @@ public class AnimalHandler {
 
             // Remove the animal from its previous position in the grid matrix
             board.getBoardMatrix()[prevX][prevY].setAnimal(null);
-            // Place the animal in the new position in the grid matrix
-            board.getBoardMatrix()[newX][newY].setAnimal(animal);
+            if (animal.isAlive()) {
+                // Place the animal in the new position in the grid matrix
+                board.getBoardMatrix()[newX][newY].setAnimal(animal);
+            } else {
+                animalsToRemove.add(animal);
+            }
         }
+
+        // Remove animals outside iterations
+        animalList.removeAll(animalsToRemove);
     }
 }
