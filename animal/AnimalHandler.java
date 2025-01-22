@@ -32,6 +32,21 @@ public class AnimalHandler {
         for (Animal animal : animalList) {
             int prevX = animal.getPosition().getX();
             int prevY = animal.getPosition().getY();
+
+            // Calculate animal energy consumption
+            int maxEnergyConsumption = animalList.getFirst().getMaxEnergyConsumption();
+            int minEnergyConsumption = animalList.getFirst().getMinEnergyConsumption();
+            int nearestPoleDist = board.calcAnimalDistToNearestPole(animal);
+            if (nearestPoleDist == 0) {
+                animal.setEnergyConsumption(maxEnergyConsumption); // Maximum energy consumption at the pole
+            } else {
+                int energyConsumption = Math.max(
+                        minEnergyConsumption,
+                        maxEnergyConsumption - (int) Math.pow(nearestPoleDist, 2) - nearestPoleDist * 5
+                ); // Decreases with distance, minimum 10
+                animal.setEnergyConsumption(energyConsumption);
+            }
+
             // Change animal position based on direction
             animal.move();
             animal.rotate();

@@ -14,11 +14,11 @@ public class Plot {
 
     public Plot() {
         // Defining X axis
-        xAxis = new NumberAxis(0, 10, 1);
+        xAxis = new NumberAxis(0, 10, 5);
         xAxis.setLabel("Iteration");
 
         // Defining Y axis
-        yAxis = new NumberAxis(0, 10, 1);
+        yAxis = new NumberAxis(0, 10, 5);
         yAxis.setLabel("Amount");
 
         // Create the LineChart

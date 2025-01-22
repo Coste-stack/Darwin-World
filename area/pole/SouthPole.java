@@ -5,7 +5,7 @@ import area.Point;
 
 public class SouthPole extends Pole {
     public SouthPole(Point topLeft, Point bottomRight) {
-        super(topLeft, bottomRight, PoleType.SOUTH);
+        super(topLeft, bottomRight, PoleType.SouthPole);
     }
 
     @Override

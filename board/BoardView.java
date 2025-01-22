@@ -131,8 +131,13 @@ public class BoardView {
                 }
             }
 
+            // Add data to plot
             gridMatrix.addAnimalSeriesData(iteration, animalAmount);
             gridMatrix.addFoodSeriesData(iteration, foodAmount);
+
+            // Log iteration
+            System.out.println("Iteration: " + iteration + " - Animals: " + animalAmount + " - Food: " + foodAmount);
+
             iteration++;
         }
     }

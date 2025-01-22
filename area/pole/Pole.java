@@ -20,6 +20,6 @@ public abstract class Pole extends Area {
 
     @Override
     public String getType() {
-        return "area.pole.Pole - " + poleType.name();
+        return "area.pole." + poleType.name();
     }
 }

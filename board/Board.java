@@ -60,9 +60,9 @@ public class Board {
         for (int i = 0; i < this.BOARD_WIDTH; i++) {
             for (int j = 0; j < this.BOARD_HEIGHT; j++) {
                 Tile tile = this.boardMatrix[i][j];
-                tile.setFoodPrefered(false);
+                tile.setFoodPreferred(false);
                 if (Random.getRandom(1, 100) <= tile.getArea().getFoodPreferedTileChance()) {
-                    tile.setFoodPrefered(true);
+                    tile.setFoodPreferred(true);
                 }
             }
         }
@@ -73,7 +73,7 @@ public class Board {
             for (int j = 0; j < this.BOARD_HEIGHT; j++) {
                 Tile tile = this.boardMatrix[i][j];
                 if (!tile.hasFood()) {
-                    if (tile.isFoodPrefered()) {
+                    if (tile.isFoodPreferred()) {
                         if (Random.getRandom(1, 100) <= primaryFoodChance) {
                             tile.setHasFood(true);
                         }
@@ -85,6 +85,53 @@ public class Board {
                 }
             }
         }
+    }
+
+    public int calcAnimalDistToNearestPole(Animal animal) {
+        return Math.min(
+                calcAnimalDistToNorthPole(animal),
+                calcAnimalDistToSouthPole(animal)
+        );
+    }
+
+    private int calcAnimalDistToNorthPole(Animal animal) {
+        // Check if current position is at pole
+        if (boardMatrix[animal.getPosition().getX()][animal.getPosition().getY()].getArea().getType().equals("area.pole.NorthPole")) {
+            return 0;
+        }
+        // Calculate the distance using one axis
+        int i;
+        for (i = animal.getPosition().getY(); i >= 0; i--) {
+            if (boardMatrix[animal.getPosition().getX()][i].getArea().getType().equals("area.pole.NorthPole")) {
+                break;
+            }
+        }
+        return i;
+    }
+
+    private int calcAnimalDistToSouthPole(Animal animal) {
+        // Check if current position is at pole
+        if (boardMatrix[animal.getPosition().getX()][animal.getPosition().getY()].getArea().getType().equals("area.pole.SouthPole")) {
+            return 0;
+        }
+        // Calculate the distance using one axis
+        int i;
+        for (i = animal.getPosition().getY(); i < this.BOARD_HEIGHT; i++) {
+            if (boardMatrix[animal.getPosition().getX()][i].getArea().getType().equals("area.pole.SouthPole")) {
+                break;
+            }
+        }
+        return i;
+    }
+
+    public void addAnimalSeriesData(int iteration, int animalAmount) {
+        adjustAxisBounds(iteration, animalAmount);
+        this.plot.getAnimalSeries().getData().add(new XYChart.Data<>(iteration, animalAmount));
+    }
+
+    public void addFoodSeriesData(int iteration, int foodAmount) {
+        adjustAxisBounds(iteration, foodAmount);
+        this.plot.getFoodSeries().getData().add(new XYChart.Data<>(iteration, foodAmount));
     }
 
     private void adjustAxisBounds(int iteration, int amount) {
@@ -101,15 +148,5 @@ public class Board {
         if (newYAxisUpperBound > currentYAxisUpperBound) {
             this.plot.getYAxis().setUpperBound(newYAxisUpperBound);
         }
-    }
-
-    public void addAnimalSeriesData(int iteration, int animalAmount) {
-        adjustAxisBounds(iteration, animalAmount);
-        this.plot.getAnimalSeries().getData().add(new XYChart.Data<>(iteration, animalAmount));
-    }
-
-    public void addFoodSeriesData(int iteration, int foodAmount) {
-        adjustAxisBounds(iteration, foodAmount);
-        this.plot.getFoodSeries().getData().add(new XYChart.Data<>(iteration, foodAmount));
     }
 }

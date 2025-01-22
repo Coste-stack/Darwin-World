@@ -62,7 +62,7 @@ public class Application extends javafx.application.Application {
                 board.addArea(plains);
                 // Set food on board
                 board.setFoodPreferredTiles();
-                board.setFoodRandomly();
+                //board.setFoodRandomly();
 
                 // Create grid visualization in window
                 BoardView boardView = new BoardView(SCREEN_WIDTH / (float) 1.75, SCREEN_HEIGHT - 20);
