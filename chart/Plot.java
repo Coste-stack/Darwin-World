@@ -1,5 +1,6 @@
 package chart;
 
+import javafx.application.Platform;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -23,6 +24,7 @@ public class Plot {
 
         // Create the LineChart
         lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setCreateSymbols(false); // Remove dots at data point
 
         // Create series for animal amount
         animalSeries = new XYChart.Series<>();
@@ -34,6 +36,9 @@ public class Plot {
         //Setting the data to Line chart
         lineChart.getData().add(animalSeries);
         lineChart.getData().add(foodSeries);
+
+        // Add the CSS file to the chart
+        lineChart.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
     }
 
     public StackPane getLineChart() {
