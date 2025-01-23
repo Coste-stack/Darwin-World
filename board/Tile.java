@@ -50,6 +50,60 @@ public class Tile {
         this.animalList.clear();
     }
 
+    private Animal getAnimalWithMostEnergy() {
+        if (this.animalList.isEmpty()) {
+            return null;
+        }
+        Animal maxEnergyAnimal = this.animalList.getFirst();
+        for (Animal animal : this.animalList) {
+            if (animal.getEnergy() > maxEnergyAnimal.getEnergy()) {
+                maxEnergyAnimal = animal;
+            }
+        }
+        return maxEnergyAnimal;
+    }
+
+    public List<Animal> getAnimalListWithMostEnergy() {
+        if (this.animalList.isEmpty()) {
+            return null;
+        }
+        Animal maxEnergyAnimal = this.getAnimalWithMostEnergy();
+        List<Animal> maxEnergyAnimalList = new ArrayList<>();
+        for (Animal animal : this.animalList) {
+            if (animal.getEnergy() == maxEnergyAnimal.getEnergy()) {
+                maxEnergyAnimalList.add(animal);
+            }
+        }
+        return maxEnergyAnimalList;
+    }
+
+    private Animal getOldestAnimal(List<Animal> animalList) {
+        if (animalList.isEmpty()) {
+            return null;
+        }
+        Animal oldestAnimal = animalList.getFirst();
+        for (Animal animal : animalList) {
+            if (animal.getAge() > oldestAnimal.getAge()) {
+                oldestAnimal = animal;
+            }
+        }
+        return oldestAnimal;
+    }
+
+    public List<Animal> getOldestAnimalList(List<Animal> animalList) {
+        if (animalList.isEmpty()) {
+            return null;
+        }
+        Animal oldestAnimal = this.getOldestAnimal(animalList);
+        List<Animal> oldestAnimalList = new ArrayList<>();
+        for (Animal animal : animalList) {
+            if (animal.getAge() == oldestAnimal.getAge()) {
+                oldestAnimalList.add(animal);
+            }
+        }
+        return oldestAnimalList;
+    }
+
     public boolean hasFood() {
         return this.hasFood;
     }

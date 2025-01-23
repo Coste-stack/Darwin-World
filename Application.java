@@ -86,14 +86,14 @@ public class Application extends javafx.application.Application {
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
                 animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
                 animalHandler.createAnimal(new Point(0, 0));
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 25; i++) {
                     animalHandler.createAnimal(new Point(Random.getRandom(0, board.getWidth()-1), Random.getRandom(0, board.getHeight()-1)));
                 }
                 boardView.refreshBoard();
 
                 // Move animals
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-                    animalHandler.moveAnimals();
+                    animalHandler.runTurn();
                     boardView.refreshBoard();
                 }));
                 timeline.setCycleCount(Animation.INDEFINITE);
