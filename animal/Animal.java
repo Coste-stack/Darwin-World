@@ -3,11 +3,14 @@ package animal;
 import area.Point;
 
 import javafx.scene.paint.Color;
+import utils.Random;
 
 public class Animal {
     private AnimalView animalView; // Visual representation of the animal
     private Point position; // Grid position of the animal
     private Direction direction; // Direction facing the front of the animal
+    private int age;
+    private static final int MIN_AGE_TO_SKIP_TURN = 10;
 
     private int energy;
     private static final int DEFAULT_ENERGY = 100;
@@ -28,12 +31,19 @@ public class Animal {
         this.energy = DEFAULT_ENERGY;
         this.energyConsumption = DEFAULT_ENERGY_CONSUMPTION;
         isAlive = true;
+        age = 0;
+    }
+
+    private int getSkipTurnChance () {
+        return Math.min((age - MIN_AGE_TO_SKIP_TURN) * 5, 50);
     }
 
     public void move() {
-        this.position.setX(this.position.getX() + direction.getDeltaX());
-        this.position.setY(this.position.getY() + direction.getDeltaY());
+        if (!(age > MIN_AGE_TO_SKIP_TURN && Random.getRandom(0, 100) < getSkipTurnChance())) {
+            this.position.setY(this.position.getY() + direction.getDeltaY());
+        }
         this.subtractEnergy(energyConsumption);
+        this.age++;
     }
 
     public void rotate() {
@@ -53,6 +63,10 @@ public class Animal {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public int getAge() {
+        return this.age;
     }
 
     public int getEnergy() {

@@ -47,8 +47,8 @@ public class Application extends javafx.application.Application {
                 Plot plot = new Plot();
 
                 // Create the grid matrix
-                int gridWidth = 8;
-                int gridHeight = 8;
+                int gridWidth = 16;
+                int gridHeight = 16;
                 Board board = new Board(gridWidth, gridHeight, plot);
 
                 // Create the area.pole.Pole at the top and bottom
