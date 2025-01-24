@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/java-simulation.iml" filepath="$PROJECT_DIR$/java-simulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-simulation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/java-simulation.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-simulation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/java-simulation.test.iml" />
     </modules>
   </component>
 </project>

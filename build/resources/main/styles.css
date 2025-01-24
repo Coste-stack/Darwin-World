@@ -1,0 +1,22 @@
+.chart-series-line {
+    -fx-stroke-width: 2px; /* Set width of series line */
+}
+
+/* Style specific to first series (index 0 - Animals) */
+.default-color0.chart-series-line {
+    -fx-stroke: brown;
+}
+/* Style specific to second series (index 1 - Food) */
+.default-color1.chart-series-line {
+    -fx-stroke: green;
+}
+
+/* Customize com.myapp.chart legend to match series colors */
+/* Legend for second series */
+.chart-legend-item-symbol.default-color0 {
+    -fx-background-color: brown;
+}
+/* Legend for second series */
+.chart-legend-item-symbol.default-color1 {
+    -fx-background-color: green;
+}

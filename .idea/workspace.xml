@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dbaee4b7-8fa0-4e3d-b86d-aabf6ce91eae" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/java-simulation.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/java-simulation.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal/Animal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal/AnimalHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal/AnimalView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/Area.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/Grassfield.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/Plains.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/pole/NorthPole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/pole/Pole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/pole/PoleType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/area/pole/SouthPole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/board/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/board/BoardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/board/Tile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/Plot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-simulation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/Application$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/animal/Animal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/animal/AnimalHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/animal/AnimalView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/animal/Direction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/Area.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/Grassfield.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/Plains.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/Point.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/pole/NorthPole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/pole/Pole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/pole/PoleType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/area/pole/SouthPole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/board/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/board/BoardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/board/Tile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/chart/Plot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/chart/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/java-simulation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java-simulation/utils/Random.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/Random.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="java-simulation" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="java-simulation" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2s4rYr0YT9Nb7I71QHHxmg17Qvh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build java-simulation.executor": "Run",
+    "Gradle.java-simulation [:Application.main()].executor": "Run",
+    "Gradle.java-simulation [:com.myapp.Application.main()].executor": "Run",
+    "Gradle.java-simulation [customFatJar].executor": "Run",
+    "Gradle.java-simulation [dependencies].executor": "Run",
+    "Gradle.java-simulation.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Projects\java-simulation\src\main\java" />
+      <recent name="C:\Users\Admin\Projects\java-simulation\.main" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.java-simulation [run]">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.myapp.Application" />
+      <module name="java-simulation.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.myapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java-simulation [customFatJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="customFatJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="java-simulation [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="java-simulation [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.java-simulation [run]" />
+        <item itemvalue="Gradle.java-simulation [dependencies]" />
+        <item itemvalue="Gradle.java-simulation [customFatJar]" />
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dbaee4b7-8fa0-4e3d-b86d-aabf6ce91eae" name="Changes" comment="" />
+      <created>1737725739435</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737725739435</updated>
+      <workItem from="1737725740752" duration="2244000" />
+      <workItem from="1737728002323" duration="426000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
