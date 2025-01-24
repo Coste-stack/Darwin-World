@@ -15,12 +15,13 @@ public class Animal {
     private int age;
     private static final int MIN_AGE_TO_SKIP_TURN = 10;
     private final int GENOTYPE_SIZE = Direction.values().length;
-    private final Direction[] genotypeList;
+    private Direction[] genotypeList;
     private int currGenotypeIndex;
     private int energy;
     private static final int DEFAULT_ENERGY = 100;
     private static final int MAX_ENERGY = 100;
     private static final int MIN_ENERGY = 0;
+    private static final int STUFFED_REQUIREMENT = DEFAULT_ENERGY / 2;
     private int energyConsumption;
     private static final int DEFAULT_ENERGY_CONSUMPTION = 10;
     private static final int MAX_ENERGY_CONSUMPTION = 15;
@@ -45,6 +46,18 @@ public class Animal {
             genotype[i] = Direction.values()[Random.getRandom(0, Direction.values().length-1)];
         }
         return genotype;
+    }
+
+    public Direction[] getGenotype() {
+        return genotypeList;
+    }
+
+    public void setGenotype(Direction[] genotypeList) {
+        this.genotypeList = genotypeList;
+    }
+
+    public int getGenotypeSize() {
+        return GENOTYPE_SIZE;
     }
 
     private int getSkipTurnChance () {
@@ -154,6 +167,10 @@ public class Animal {
             isAlive = false;
             animalView = null;
         }
+    }
+
+    public boolean isStuffed() {
+        return this.energy >= STUFFED_REQUIREMENT;
     }
 
     public boolean isAlive() {

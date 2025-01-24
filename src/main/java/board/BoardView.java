@@ -122,6 +122,7 @@ public class BoardView {
                     for (Animal animal : tile.getAnimalList()) {
                         AnimalView animalView = animal.getAnimalView();
                         if (animalView != null) {
+                            animalAmount++;
                             // Display animalView in tile
                             if (row < 2) {
                                 // if on the tile is more than one animal - decrease its size to allow up to 4

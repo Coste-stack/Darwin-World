@@ -14,21 +14,25 @@ public class AnimalHandler {
     private final BoardView boardView;
     List<Animal> animalList;
 
+    private static final int REPRODUCTION_ENERGY_REQUIREMENT = 50;
+
     public AnimalHandler(Board board, BoardView boardView) {
         this.board = board;
         this.boardView = boardView;
         this.animalList = new ArrayList<>();
     }
 
-    public void createAnimal(Point position) {
+    public Animal createAnimal(Point position) {
         Animal animal = new Animal(position, boardView.calcTileSize() / 2);
         board.addAnimal(animal);
         animalList.add(animal);
+        return animal;
     }
 
     public void runTurn() {
         moveAnimals();
         eatFood();
+        reproduceAnimals();
     }
 
     public void moveAnimals() {
@@ -90,13 +94,13 @@ public class AnimalHandler {
         }
     }
 
-    private Animal resolveFoodWar(Tile tile) {
+    private Animal resolveTileWar(Tile tile, List<Animal> startingAnimalList) {
         // One animal on tile
-        if (tile.getAnimalList().size() == 1) {
+        if (startingAnimalList.size() == 1) {
             return tile.getAnimalList().getFirst();
         }
         // Multiple animals on tile
-        else if (tile.getAnimalList().size() > 1) {
+        else if (startingAnimalList.size() > 1) {
             // Food gets animal with most energy
             List<Animal> maxEnergyAnimalList = tile.getAnimalListWithMostEnergy();
             // One animal with most energy
@@ -131,14 +135,13 @@ public class AnimalHandler {
                 Tile tile = board.getBoardMatrix()[i][j];
                 if (tile.hasFood()) {
                     // Resolve food war between animals on tile
-                    Animal animal = resolveFoodWar(tile);
+                    Animal animal = resolveTileWar(tile, tile.getAnimalList());
                     if (animal != null) {
                         // Animal eats the food
                         animal.addEnergy(animal.getEnergyFoodGain());
                         tile.setHasFood(false);
                     }
                 }
-
             }
         }
 
@@ -165,6 +168,64 @@ public class AnimalHandler {
 
         // Remove animals outside iterations
         animalList.removeAll(animalsToRemove);
+    }
+
+    private void reproduceAnimals() {
+        for (int i = 0; i < board.getWidth(); i++) {
+            for (int j = 0; j < board.getHeight(); j++) {
+                Tile tile = board.getBoardMatrix()[i][j];
+
+                // Get animals that can reproduce - stuffed
+                List<Animal> stuffedAnimalList = new ArrayList<>();
+                for (Animal animal : tile.getAnimalList()) {
+                    if (animal.isStuffed()) {
+                        stuffedAnimalList.add(animal);
+                    }
+                }
+
+                // Get first best animal to reproduce
+                Animal animal1 = resolveTileWar(tile, stuffedAnimalList);
+
+                if (animal1 != null) {
+                    // Filter 'stuffedAnimalList' to not include 'animal1'
+                    List<Animal> filteredStuffedAnimalList = new ArrayList<>();
+                    for (Animal animal : stuffedAnimalList) {
+                        if (!animal.equals(animal1)) {
+                            filteredStuffedAnimalList.add(animal);
+                        }
+                    }
+
+                    // Get second best animal to reproduce
+                    Animal animal2 = resolveTileWar(tile, filteredStuffedAnimalList);
+                    if (animal2 != null) {
+                        reproduceAnimals(tile, animal1, animal2);
+                    }
+                }
+            }
+        }
+    }
+
+    private void reproduceAnimals(Tile tile, Animal animal1, Animal animal2) {
+        // Create the child
+        animal1.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
+        animal2.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
+        Animal child = this.createAnimal(animal1.getPosition());
+
+        final int genotypeSize = animal1.getGenotypeSize();
+        // Child inherits % of parents' genotypes (% is based on their energy)
+        int animal1EnergySize = (int) Math.ceil(animal1.getEnergyPercentage() * genotypeSize);
+        int animal2EnergySize = genotypeSize - animal1EnergySize; // Fill the rest using other parent genotype
+
+        // Create the genotype
+        Direction[] genotypeList = new Direction[genotypeSize];
+        for (int i = 0; i < animal1EnergySize; i++) {
+            genotypeList[i] = animal1.getGenotype()[Random.getRandom(0, genotypeSize-1)];
+        }
+        for (int i = 0; i < animal2EnergySize; i++) {
+            genotypeList[i+animal1EnergySize] = animal2.getGenotype()[Random.getRandom(0, genotypeSize-1)];
+        }
+
+        child.setGenotype(genotypeList);
     }
 
     public List<Animal> getAnimalList() {

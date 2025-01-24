@@ -47,8 +47,8 @@ public class Application extends javafx.application.Application {
                 Plot plot = new Plot();
 
                 // Create the grid matrix
-                int gridWidth = 32;
-                int gridHeight = 32;
+                int gridWidth = 16;
+                int gridHeight = 16;
                 Board board = new Board(gridWidth, gridHeight, plot);
 
                 // Create the area.pole.Pole at the top and bottom
@@ -83,7 +83,7 @@ public class Application extends javafx.application.Application {
 
                 // Create animals
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
-                for (int i = 0; i < 100; i++) {
+                for (int i = 0; i < 10; i++) {
                     animalHandler.createAnimal(new Point(Random.getRandom(0, board.getWidth()-1), Random.getRandom(0, board.getHeight()-1)));
                 }
 

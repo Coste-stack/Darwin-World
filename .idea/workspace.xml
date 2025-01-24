@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbaee4b7-8fa0-4e3d-b86d-aabf6ce91eae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Animal.class.uniqueId3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalView.class.uniqueId0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Tile.class.uniqueId5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
@@ -16,14 +13,19 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/animal/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/animal/Animal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalHandler.class.uniqueId1" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalHandler.class.uniqueId2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId3" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Board.class.uniqueId4" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Board.class.uniqueId7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/BoardView.class.uniqueId2" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/BoardView.class.uniqueId4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/animal/AnimalHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/animal/AnimalHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/board/BoardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/board/BoardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Animal.class.uniqueId3" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Animal.class.uniqueId3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalHandler.class.uniqueId2" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalHandler.class.uniqueId2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId1" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/BoardView.class.uniqueId4" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/BoardView.class.uniqueId4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animal/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/animal/AnimalHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animal/AnimalHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/board/BoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/BoardView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,35 +84,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.AnimalHandlerTest.testRunTurnMovesAnimals.executor": "Debug",
-    "Gradle.Build java-simulation.executor": "Run",
-    "Gradle.java-simulation [:Application.main()].executor": "Run",
-    "Gradle.java-simulation [:com.myapp.Application.main()].executor": "Run",
-    "Gradle.java-simulation [customFatJar].executor": "Run",
-    "Gradle.java-simulation [dependencies].executor": "Run",
-    "Gradle.java-simulation [run].executor": "Run",
-    "Gradle.java-simulation [test].executor": "Run",
-    "Gradle.java-simulation.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.AnimalHandlerTest.testRunTurnMovesAnimals.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.Build java-simulation.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [:Application.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [:com.myapp.Application.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [customFatJar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Projects\java-simulation\src\main\resources" />
@@ -254,7 +256,8 @@
       <workItem from="1737728902230" duration="7842000" />
       <workItem from="1737747838801" duration="2000" />
       <workItem from="1737748724893" duration="1737000" />
-      <workItem from="1737751113498" duration="939000" />
+      <workItem from="1737751113498" duration="1882000" />
+      <workItem from="1737760938980" duration="1719000" />
     </task>
     <servers />
   </component>
