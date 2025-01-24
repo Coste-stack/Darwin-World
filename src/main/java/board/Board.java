@@ -14,14 +14,17 @@ public class Board {
     private final int BOARD_WIDTH;
     private final int BOARD_HEIGHT;
     private final Plot plot;
-    private final static int primaryFoodChance = 60; // Chance for food on foodPrefered tiles
-    private final static int secondaryFoodChance = 10; // Chance for food on non foodPrefered tiles
+    private final static int primaryFoodChance = 80; // Chance for food to appear on foodPrefered tiles
+    private final static int secondaryFoodChance = 100 - primaryFoodChance; // Chance for food to appear on non foodPrefered tiles
+    private final static int foodSpawnInterval = 2; // Determines the interval (in turns) between food spawn
+    private int foodSpawnCounter;
 
     public Board(int x, int y, Plot plot) {
         this.BOARD_WIDTH = x;
         this.BOARD_HEIGHT = y;
         this.boardMatrix = new Tile[x][y];
         this.plot = plot;
+        this.foodSpawnCounter = foodSpawnInterval;
         Area grassfield = new Grassfield(null, null).getArea(BOARD_WIDTH, BOARD_HEIGHT);
 
         for (int i = 0; i < x; i++) {
@@ -61,7 +64,7 @@ public class Board {
             for (int j = 0; j < this.BOARD_HEIGHT; j++) {
                 Tile tile = this.boardMatrix[i][j];
                 tile.setFoodPreferred(false);
-                if (Random.getRandom(1, 100) <= tile.getArea().getFoodPreferedTileChance()) {
+                if (Random.getRandom(1, 500) <= tile.getArea().getFoodPreferedTileChance()) {
                     tile.setFoodPreferred(true);
                 }
             }
@@ -69,17 +72,21 @@ public class Board {
     }
 
     public void setFoodRandomly() {
-        for (int i = 0; i < this.BOARD_WIDTH; i++) {
-            for (int j = 0; j < this.BOARD_HEIGHT; j++) {
-                Tile tile = this.boardMatrix[i][j];
-                if (!tile.hasFood()) {
-                    if (tile.isFoodPreferred()) {
-                        if (Random.getRandom(1, 100) <= primaryFoodChance) {
-                            tile.setHasFood(true);
-                        }
-                    } else {
-                        if (Random.getRandom(1, 100) <= secondaryFoodChance) {
-                            tile.setHasFood(true);
+        foodSpawnCounter++;
+        if (foodSpawnCounter > foodSpawnInterval-1) {
+            foodSpawnCounter = 0;
+            for (int i = 0; i < this.BOARD_WIDTH; i++) {
+                for (int j = 0; j < this.BOARD_HEIGHT; j++) {
+                    Tile tile = this.boardMatrix[i][j];
+                    if (!tile.hasFood()) {
+                        if (tile.isFoodPreferred()) {
+                            if (Random.getRandom(1, 500) <= primaryFoodChance) {
+                                tile.setHasFood(true);
+                            }
+                        } else {
+                            if (Random.getRandom(1, 500) <= secondaryFoodChance) {
+                                tile.setHasFood(true);
+                            }
                         }
                     }
                 }

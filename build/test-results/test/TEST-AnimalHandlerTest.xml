@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnimalHandlerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-01-24T17:18:07" hostname="DESKTOP-BE9QQEK" time="0.048">
+<testsuite name="AnimalHandlerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-01-24T20:01:13" hostname="DESKTOP-BE9QQEK" time="0.075">
   <properties/>
-  <testcase name="testRunTurnMovesAnimals()" classname="AnimalHandlerTest" time="0.044"/>
+  <testcase name="testRunTurnMovesAnimals()" classname="AnimalHandlerTest" time="0.071"/>
   <testcase name="testAnimalIsCreatedAndStoredCorrectly()" classname="AnimalHandlerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

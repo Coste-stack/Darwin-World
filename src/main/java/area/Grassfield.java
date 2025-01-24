@@ -3,7 +3,7 @@ package area;
 import javafx.scene.paint.Color;
 
 public class Grassfield extends Area {
-    private final static int FOOD_PREFERRED_TILE_CHANCE = 20;
+    private final static int FOOD_PREFERRED_TILE_CHANCE = 30;
 
     public Grassfield(Point topLeft, Point bottomRight) {
         super(topLeft, bottomRight, Color.LIGHTGREEN, FOOD_PREFERRED_TILE_CHANCE);

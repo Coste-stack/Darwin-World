@@ -47,8 +47,8 @@ public class Application extends javafx.application.Application {
                 Plot plot = new Plot();
 
                 // Create the grid matrix
-                int gridWidth = 16;
-                int gridHeight = 16;
+                int gridWidth = 32;
+                int gridHeight = 32;
                 Board board = new Board(gridWidth, gridHeight, plot);
 
                 // Create the area.pole.Pole at the top and bottom
@@ -61,9 +61,8 @@ public class Application extends javafx.application.Application {
                 board.addArea(NorthPole);
                 board.addArea(SouthPole);
                 board.addArea(plains);
-                // Set food on board
+                // Determine preferred food tiles on board
                 board.setFoodPreferredTiles();
-                board.setFoodRandomly();
 
                 // Create grid visualization in window
                 BoardView boardView = new BoardView(board, SCREEN_WIDTH / (float) 1.75, SCREEN_HEIGHT - 20);
@@ -84,15 +83,16 @@ public class Application extends javafx.application.Application {
 
                 // Create animals
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
-                animalHandler.createAnimal(new Point(gridWidth / 2, gridHeight / 2));
-                animalHandler.createAnimal(new Point(0, 0));
-                for (int i = 0; i < 25; i++) {
+                for (int i = 0; i < 100; i++) {
                     animalHandler.createAnimal(new Point(Random.getRandom(0, board.getWidth()-1), Random.getRandom(0, board.getHeight()-1)));
                 }
-                boardView.refreshBoard();
 
-                // Move animals
+                // Run the simulation
+                board.setFoodRandomly();
+                animalHandler.runTurn();
+                boardView.refreshBoard();
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+                    board.setFoodRandomly();
                     animalHandler.runTurn();
                     boardView.refreshBoard();
                 }));

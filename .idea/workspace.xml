@@ -5,65 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbaee4b7-8fa0-4e3d-b86d-aabf6ce91eae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/AnimalHandlerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BoardTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TileTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/Application$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/animal/Animal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/animal/AnimalHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/animal/AnimalView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/animal/Direction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/Area.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/Grassfield.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/Plains.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/Point.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/pole/NorthPole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/pole/Pole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/pole/PoleType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/area/pole/SouthPole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/board/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/board/BoardView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/board/Tile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/chart/Plot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/myapp/utils/Random.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalHandler.class.uniqueId1" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalHandler.class.uniqueId1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/animal/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/animal/Animal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/area/Grassfield.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/area/Grassfield.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/area/Plains.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/area/Plains.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/board/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/AnimalHandlerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/AnimalHandlerTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BoardTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BoardTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/TileTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/TileTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-AnimalHandlerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-AnimalHandlerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BoardTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BoardTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-TileTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-TileTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AnimalHandler.class.uniqueId1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId2" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Board.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/BoardView.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Plot.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animal/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/animal/AnimalHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animal/AnimalHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/animal/AnimalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animal/AnimalView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/animal/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animal/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/Area.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/Grassfield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/Grassfield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/Plains.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/Plains.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/pole/NorthPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/pole/NorthPole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/pole/Pole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/pole/Pole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/pole/PoleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/pole/PoleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/area/pole/SouthPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/pole/SouthPole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/board/BoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/BoardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/board/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/chart/Plot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chart/Plot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/myapp/utils/Random.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Random.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animal/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/area/Grassfield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/Grassfield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/area/Plains.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/area/Plains.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Board.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,35 +95,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.AnimalHandlerTest.testRunTurnMovesAnimals.executor": "Debug",
-    "Gradle.Build java-simulation.executor": "Run",
-    "Gradle.java-simulation [:Application.main()].executor": "Run",
-    "Gradle.java-simulation [:com.myapp.Application.main()].executor": "Run",
-    "Gradle.java-simulation [customFatJar].executor": "Run",
-    "Gradle.java-simulation [dependencies].executor": "Run",
-    "Gradle.java-simulation [run].executor": "Run",
-    "Gradle.java-simulation [test].executor": "Run",
-    "Gradle.java-simulation.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.AnimalHandlerTest.testRunTurnMovesAnimals.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.Build java-simulation.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [:Application.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [:com.myapp.Application.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [customFatJar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation [test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.java-simulation.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Projects\java-simulation\src\main\resources" />
@@ -161,7 +134,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.java-simulation [test]">
+  <component name="RunManager" selected="Gradle.java-simulation [run]">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Application" />
       <module name="java-simulation.main" />
@@ -265,9 +238,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.java-simulation [run]" />
         <item itemvalue="Gradle.java-simulation [test]" />
         <item itemvalue="Gradle.java-simulation [dependencies]" />
-        <item itemvalue="Gradle.java-simulation [run]" />
         <item itemvalue="Gradle.java-simulation [customFatJar]" />
         <item itemvalue="Application.Application" />
       </list>
@@ -291,7 +264,9 @@
       <updated>1737725739435</updated>
       <workItem from="1737725740752" duration="2244000" />
       <workItem from="1737728002323" duration="772000" />
-      <workItem from="1737728902230" duration="7285000" />
+      <workItem from="1737728902230" duration="7842000" />
+      <workItem from="1737747838801" duration="2000" />
+      <workItem from="1737748724893" duration="1443000" />
     </task>
     <servers />
   </component>
