@@ -11,7 +11,7 @@
     -fx-stroke: green;
 }
 
-/* Customize com.myapp.chart legend to match series colors */
+/* Customize chart legend to match series colors */
 /* Legend for second series */
 .chart-legend-item-symbol.default-color0 {
     -fx-background-color: brown;

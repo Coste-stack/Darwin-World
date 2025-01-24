@@ -6,7 +6,6 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
-group 'com.myapp'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -17,15 +16,18 @@ ext {
     junitVersion = '5.9.2'
 }
 
-sourceCompatibility = '23'
-targetCompatibility = '23'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(23)
+    }
+}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
 application {
-    mainClass = "${group}.Application"
+    mainClass.set("Application")
 }
 
 javafx {
@@ -34,17 +36,29 @@ javafx {
 }
 
 dependencies {
+    // javafx - for running
     implementation 'org.controlsfx:controlsfx:11.1.2'
     implementation 'org.openjfx:javafx-controls:17.0.6'
     implementation 'org.openjfx:javafx-fxml:17.0.6'
     implementation 'org.openjfx:javafx-base:17.0.6'
 
+    /* Tests */
+    // junit
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    // javafx - for tests
+    testImplementation 'org.controlsfx:controlsfx:11.1.2'
+    testImplementation 'org.openjfx:javafx-controls:17.0.6'
+    testImplementation 'org.openjfx:javafx-fxml:17.0.6'
+    testImplementation 'org.openjfx:javafx-base:17.0.6'
 }
 
 test {
     useJUnitPlatform()
+    jvmArgs = [
+            '--module-path', configurations.testRuntimeClasspath.asPath,
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.base,javafx.graphics'
+    ]
 }
 
 run {
