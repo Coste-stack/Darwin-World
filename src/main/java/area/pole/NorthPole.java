@@ -2,6 +2,7 @@ package area.pole;
 
 import area.Area;
 import area.Point;
+import utils.ConfigHandler;
 
 public class NorthPole extends Pole {
     public NorthPole(Point topLeft, Point bottomRight) {
@@ -9,10 +10,13 @@ public class NorthPole extends Pole {
     }
 
     @Override
-    public Area getArea(int gridWidth, int gridHeight) {
+    public Area getArea() {
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+
         return new NorthPole(
-                new Point(0, 0),
-                new Point(gridWidth, (int) Math.ceil((double) gridHeight / 10))
+            new Point(0, 0),
+            new Point(BOARD_WIDTH, (int) Math.ceil((double) BOARD_HEIGHT / 10))
         );
     }
 }

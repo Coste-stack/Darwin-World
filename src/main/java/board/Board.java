@@ -7,34 +7,44 @@ import area.Grassfield;
 import chart.Plot;
 import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
+import utils.ConfigHandler;
 import utils.Random;
 
 public class Board {
     private final Tile[][] boardMatrix;
     private final int BOARD_WIDTH;
     private final int BOARD_HEIGHT;
-    private final Plot plot;
-    private final static int primaryFoodChance = 80; // Chance for food to appear on foodPrefered tiles
-    private final static int secondaryFoodChance = 100 - primaryFoodChance; // Chance for food to appear on non foodPrefered tiles
+    private Plot plot;
     private final static int foodSpawnInterval = 2; // Determines the interval (in turns) between food spawn
     private int foodSpawnCounter;
 
-    public Board(int x, int y, Plot plot) {
-        this.BOARD_WIDTH = x;
-        this.BOARD_HEIGHT = y;
-        this.boardMatrix = new Tile[x][y];
-        this.plot = plot;
-        this.foodSpawnCounter = foodSpawnInterval;
-        Area grassfield = new Grassfield(null, null).getArea(BOARD_WIDTH, BOARD_HEIGHT);
+    public Board() {
+        this.BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
+        this.BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+        this.boardMatrix = new Tile[BOARD_WIDTH][BOARD_HEIGHT];
 
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
+        this.foodSpawnCounter = foodSpawnInterval;
+        Area grassfield = new Grassfield(null, null).getArea();
+
+        for (int i = 0; i < BOARD_WIDTH; i++) {
+            for (int j = 0; j < BOARD_HEIGHT; j++) {
                 Color fillColor = (i + j) % 2 == 0 ? Color.GRAY : Color.BLACK;
                 Tile tile = new Tile(fillColor);
                 tile.setArea(grassfield);
                 this.boardMatrix[i][j] = tile;
             }
         }
+    }
+
+    public void addPlot(Plot plot) {
+        if (this.plot != null) {
+            System.err.println("Tried to add plot to board that already had one");
+        }
+        this.plot = plot;
+    }
+
+    public Plot getPlot() {
+        return this.plot;
     }
 
     public Tile[][] getBoardMatrix() {
@@ -80,11 +90,11 @@ public class Board {
                     Tile tile = this.boardMatrix[i][j];
                     if (!tile.hasFood()) {
                         if (tile.isFoodPreferred()) {
-                            if (Random.getRandom(1, 500) <= primaryFoodChance) {
+                            if (Random.getRandom(1, 500) <= ConfigHandler.getInstance().getConfig("PRIMARY_FOOD_CHANCE")) {
                                 tile.setHasFood(true);
                             }
                         } else {
-                            if (Random.getRandom(1, 500) <= secondaryFoodChance) {
+                            if (Random.getRandom(1, 500) <= ConfigHandler.getInstance().getConfig("SECONDARY_FOOD_CHANCE")) {
                                 tile.setHasFood(true);
                             }
                         }
@@ -132,13 +142,17 @@ public class Board {
     }
 
     public void addAnimalSeriesData(int iteration, int animalAmount) {
-        adjustAxisBounds(iteration, animalAmount);
-        this.plot.getAnimalSeries().getData().add(new XYChart.Data<>(iteration, animalAmount));
+        if (this.plot != null) {
+            adjustAxisBounds(iteration, animalAmount);
+            this.plot.getAnimalSeries().getData().add(new XYChart.Data<>(iteration, animalAmount));
+        }
     }
 
     public void addFoodSeriesData(int iteration, int foodAmount) {
-        adjustAxisBounds(iteration, foodAmount);
-        this.plot.getFoodSeries().getData().add(new XYChart.Data<>(iteration, foodAmount));
+        if (this.plot != null) {
+            adjustAxisBounds(iteration, foodAmount);
+            this.plot.getFoodSeries().getData().add(new XYChart.Data<>(iteration, foodAmount));
+        }
     }
 
     private void adjustAxisBounds(int iteration, int amount) {

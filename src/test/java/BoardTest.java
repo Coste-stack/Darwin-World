@@ -11,7 +11,7 @@ class BoardTest {
     void testBoardInitializationCreatesCorrectDimensions() {
         int rows = 10;
         int columns = 15;
-        Board board = new Board(rows, columns, new Plot());
+        Board board = new Board();
 
         // Verify dimensions of the board matrix
         Tile[][] matrix = board.getBoardMatrix();
@@ -21,7 +21,7 @@ class BoardTest {
 
     @Test
     void testAssignRandomFoodProbability() {
-        Board board = new Board(5, 5, new Plot());
+        Board board = new Board();
         Tile[][] matrix = board.getBoardMatrix();
 
         // Ensure no food initially

@@ -28,7 +28,7 @@ public abstract class Area {
         return this.FOOD_PREFERRED_TILE_CHANCE;
     }
 
-    public abstract Area getArea(int gridWidth, int gridHeight);
+    public abstract Area getArea();
 
     public abstract String getType();
 }

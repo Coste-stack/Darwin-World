@@ -22,7 +22,7 @@ class AnimalHandlerTest {
 
     @Test
     void testAnimalIsCreatedAndStoredCorrectly() {
-        Board board = new Board(10, 10, new Plot()); // Create a 10x10 board
+        Board board = new Board(); // Create a 10x10 board
         BoardView boardView = new BoardView(board, 500, 500);
         AnimalHandler handler = new AnimalHandler(board, boardView);
 
@@ -38,7 +38,7 @@ class AnimalHandlerTest {
 
     @Test
     void testRunTurnMovesAnimals() {
-        Board board = new Board(10, 10, new Plot());
+        Board board = new Board();
         BoardView boardView = new BoardView(board,500, 500);
         AnimalHandler handler = new AnimalHandler(board, boardView);
 

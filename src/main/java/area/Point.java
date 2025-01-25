@@ -1,8 +1,16 @@
 package area;
 
+import utils.ConfigHandler;
+import utils.Random;
+
 public class Point {
     private int x;
     private int y;
+
+    public Point() {
+        this.x = Random.getRandom(0, ConfigHandler.getInstance().getConfig("BOARD_WIDTH")-1);
+        this.y = Random.getRandom(0, ConfigHandler.getInstance().getConfig("BOARD_HEIGHT")-1);
+    }
 
     public Point(int x, int y) {
         this.x = x;

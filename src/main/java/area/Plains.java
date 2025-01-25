@@ -1,6 +1,7 @@
 package area;
 
 import javafx.scene.paint.Color;
+import utils.ConfigHandler;
 
 public class Plains extends Area {
     private final static int FOOD_PREFERRED_TILE_CHANCE = 60;
@@ -10,12 +11,15 @@ public class Plains extends Area {
     }
 
     @Override
-    public Area getArea(int gridWidth, int gridHeight) {
-        int centerX = gridWidth / 2;
-        int centerY = gridHeight / 2;
+    public Area getArea() {
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
 
-        int offsetWidth = gridWidth / 4;
-        int offsetHeight = gridHeight / 4;
+        int centerX = BOARD_WIDTH / 2;
+        int centerY = BOARD_HEIGHT / 2;
+
+        int offsetWidth = BOARD_WIDTH / 4;
+        int offsetHeight = BOARD_HEIGHT / 4;
 
         return new Plains(
                 new Point(centerX - offsetWidth, centerY - offsetHeight),

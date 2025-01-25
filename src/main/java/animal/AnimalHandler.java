@@ -4,6 +4,7 @@ import area.Point;
 import board.Board;
 import board.BoardView;
 import board.Tile;
+import utils.ConfigHandler;
 import utils.Random;
 
 import java.util.ArrayList;
@@ -13,8 +14,6 @@ public class AnimalHandler {
     private final Board board;
     private final BoardView boardView;
     List<Animal> animalList;
-
-    private static final int REPRODUCTION_ENERGY_REQUIREMENT = 50;
 
     public AnimalHandler(Board board, BoardView boardView) {
         this.board = board;
@@ -41,15 +40,15 @@ public class AnimalHandler {
             int prevY = animal.getPosition().getY();
 
             // Calculate animal energy consumption
-            int maxEnergyConsumption = animalList.getFirst().getMaxEnergyConsumption();
-            int minEnergyConsumption = animalList.getFirst().getMinEnergyConsumption();
+            int MAX_ENERGY_CONSUMPTION = ConfigHandler.getInstance().getConfig("MAX_ENERGY_CONSUMPTION");
+            int MIN_ENERGY_CONSUMPTION = ConfigHandler.getInstance().getConfig("MIN_ENERGY_CONSUMPTION");
             int nearestPoleDist = board.calcAnimalDistToNearestPole(animal);
             if (nearestPoleDist == 0) {
-                animal.setEnergyConsumption(maxEnergyConsumption); // Maximum energy consumption at the pole
+                animal.setEnergyConsumption(MAX_ENERGY_CONSUMPTION); // Maximum energy consumption at the pole
             } else {
                 int energyConsumption = Math.max(
-                        minEnergyConsumption,
-                        maxEnergyConsumption - (int) Math.pow(nearestPoleDist, 2) - nearestPoleDist * 5
+                        MIN_ENERGY_CONSUMPTION,
+                        MAX_ENERGY_CONSUMPTION - (int) Math.pow(nearestPoleDist, 2) - nearestPoleDist * 5
                 ); // Decreases with distance, minimum 10
                 animal.setEnergyConsumption(energyConsumption);
             }
@@ -85,7 +84,7 @@ public class AnimalHandler {
 
             // Check if this tile has food (add energy and remove food)
             if (board.getBoardMatrix()[newX][newY].hasFood()) {
-                animal.addEnergy(animal.getEnergyFoodGain());
+                animal.addEnergy(ConfigHandler.getInstance().getConfig("ENERGY_FOOD_GAIN"));
                 board.getBoardMatrix()[newX][newY].setHasFood(false);
             }
 
@@ -138,7 +137,7 @@ public class AnimalHandler {
                     Animal animal = resolveTileWar(tile, tile.getAnimalList());
                     if (animal != null) {
                         // Animal eats the food
-                        animal.addEnergy(animal.getEnergyFoodGain());
+                        animal.addEnergy(ConfigHandler.getInstance().getConfig("ENERGY_FOOD_GAIN"));
                         tile.setHasFood(false);
                     }
                 }
@@ -151,12 +150,12 @@ public class AnimalHandler {
 
             // Check if this tile has food (add energy and remove food)
             if (board.getBoardMatrix()[newX][newY].hasFood()) {
-                animal.addEnergy(animal.getEnergyFoodGain());
+                animal.addEnergy(ConfigHandler.getInstance().getConfig("ENERGY_FOOD_GAIN"));
                 board.getBoardMatrix()[newX][newY].setHasFood(false);
             }
 
             // Log the animal properties
-            System.out.println(animalList.indexOf(animal) + " - " + animal);
+            //System.out.println(animalList.indexOf(animal) + " - " + animal);
 
             if (animal.isAlive()) {
                 // Place the animal in the new position in the grid matrix
@@ -207,6 +206,7 @@ public class AnimalHandler {
 
     private void reproduceAnimals(Tile tile, Animal animal1, Animal animal2) {
         // Create the child
+        int REPRODUCTION_ENERGY_REQUIREMENT = ConfigHandler.getInstance().getConfig("REPRODUCTION_ENERGY_REQUIREMENT");
         animal1.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
         animal2.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
         Animal child = this.createAnimal(animal1.getPosition());

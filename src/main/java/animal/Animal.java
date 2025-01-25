@@ -3,6 +3,7 @@ package animal;
 import area.Point;
 
 import javafx.scene.paint.Color;
+import utils.ConfigHandler;
 import utils.Random;
 
 import java.util.Arrays;
@@ -13,20 +14,11 @@ public class Animal {
     private Direction direction; // Direction facing the front of the animal
     private boolean isAlive;
     private int age;
-    private static final int MIN_AGE_TO_SKIP_TURN = 10;
     private final int GENOTYPE_SIZE = Direction.values().length;
     private Direction[] genotypeList;
     private int currGenotypeIndex;
     private int energy;
-    private static final int DEFAULT_ENERGY = 100;
-    private static final int MAX_ENERGY = 100;
-    private static final int MIN_ENERGY = 0;
-    private static final int STUFFED_REQUIREMENT = DEFAULT_ENERGY / 2;
     private int energyConsumption;
-    private static final int DEFAULT_ENERGY_CONSUMPTION = 10;
-    private static final int MAX_ENERGY_CONSUMPTION = 15;
-    private static final int MIN_ENERGY_CONSUMPTION = 5;
-    private static final int ENERGY_FOOD_GAIN = 50;
 
     public Animal(Point position, float radius) {
         this.animalView = new AnimalView(this, Color.RED, radius);
@@ -34,8 +26,8 @@ public class Animal {
         this.direction = Direction.getRandomDirection();
         this.isAlive = true;
         this.age = 0;
-        this.energy = DEFAULT_ENERGY;
-        this.energyConsumption = DEFAULT_ENERGY_CONSUMPTION;
+        this.energy = ConfigHandler.getInstance().getConfig("DEFAULT_ENERGY");
+        this.energyConsumption = ConfigHandler.getInstance().getConfig("DEFAULT_ENERGY_CONSUMPTION");
         this.genotypeList = generateGenotype();
         this.currGenotypeIndex = 0;
     }
@@ -61,10 +53,12 @@ public class Animal {
     }
 
     private int getSkipTurnChance () {
-        return Math.min((age - MIN_AGE_TO_SKIP_TURN) * 5, 50);
+        int MIN_AGE_TO_SKIP_TURN = ConfigHandler.getInstance().getConfig("MIN_AGE_TO_SKIP_TURN");
+        return Math.min((age - MIN_AGE_TO_SKIP_TURN) * 2, 50);
     }
 
     public void move() {
+        int MIN_AGE_TO_SKIP_TURN = ConfigHandler.getInstance().getConfig("MIN_AGE_TO_SKIP_TURN");
         if (!(age > MIN_AGE_TO_SKIP_TURN && Random.getRandom(0, 100) < getSkipTurnChance())) {
             // Get direction from genotypes
             this.direction = this.genotypeList[this.currGenotypeIndex];
@@ -86,6 +80,7 @@ public class Animal {
     public void rotate() {
         this.direction = Direction.getRandomDirection();
     }
+
     public void rotate(Direction direction) {
         this.direction = direction;
     }
@@ -110,16 +105,9 @@ public class Animal {
         return this.energy;
     }
 
-    public int getMaxEnergy() {
-        return MAX_ENERGY;
-    }
-
-    public int getMinEnergy() {
-        return MIN_ENERGY;
-    }
-
     public float getEnergyPercentage() {
-        if (this.getMaxEnergy() == 0) {
+        int MAX_ENERGY = ConfigHandler.getInstance().getConfig("MAX_ENERGY");
+        if (MAX_ENERGY == 0) {
             return 0;
         }
         return (float) this.energy / (float) MAX_ENERGY;
@@ -128,18 +116,9 @@ public class Animal {
     public int getEnergyConsumption() {
         return this.energyConsumption;
     }
+
     public void setEnergyConsumption(int energyConsumption) {
         this.energyConsumption = energyConsumption;
-    }
-
-    public int getMaxEnergyConsumption() {
-        return MAX_ENERGY_CONSUMPTION;
-    }
-    public int getMinEnergyConsumption() {
-        return MIN_ENERGY_CONSUMPTION;
-    }
-    public int getEnergyFoodGain() {
-        return ENERGY_FOOD_GAIN;
     }
 
     public void addEnergy(int energy) {
@@ -148,6 +127,7 @@ public class Animal {
             this.energy += energy;
         }
         // normalize the energy
+        int MAX_ENERGY = ConfigHandler.getInstance().getConfig("MAX_ENERGY");
         if (this.energy > MAX_ENERGY) {
             this.energy = MAX_ENERGY;
         }
@@ -170,7 +150,7 @@ public class Animal {
     }
 
     public boolean isStuffed() {
-        return this.energy >= STUFFED_REQUIREMENT;
+        return this.energy >= ConfigHandler.getInstance().getConfig("STUFFED_REQUIREMENT");
     }
 
     public boolean isAlive() {
@@ -183,6 +163,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal: " + this.position.toString() + "; energy: " + this.energy + " consumption: " + this.energyConsumption + " %: " + this.getEnergyPercentage() + "; genotype: " + Arrays.toString(this.genotypeList);
+        return "Animal: " + this.position.toString() + "; age: " + this.age + "; energy: " + this.energy + " consumption: " + this.energyConsumption + " %: " + this.getEnergyPercentage() + "; genotype: " + Arrays.toString(this.genotypeList);
     }
 }

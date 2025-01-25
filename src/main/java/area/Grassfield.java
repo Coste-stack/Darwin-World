@@ -1,6 +1,7 @@
 package area;
 
 import javafx.scene.paint.Color;
+import utils.ConfigHandler;
 
 public class Grassfield extends Area {
     private final static int FOOD_PREFERRED_TILE_CHANCE = 30;
@@ -10,10 +11,13 @@ public class Grassfield extends Area {
     }
 
     @Override
-    public Area getArea(int gridWidth, int gridHeight) {
+    public Area getArea() {
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+
         return new Grassfield(
                 new Point(0, 0),
-                new Point(gridWidth, gridHeight)
+                new Point(BOARD_WIDTH, BOARD_HEIGHT)
         );
     }
 

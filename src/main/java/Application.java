@@ -5,6 +5,7 @@ import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
 import chart.Plot;
+import utils.ConfigHandler;
 import utils.Random;
 
 import javafx.event.ActionEvent;
@@ -25,15 +26,11 @@ public class Application extends javafx.application.Application {
         launch(args);
     }
 
-    private static final int SCREEN_WIDTH = 1280;
-    private static final int SCREEN_HEIGHT = 720;
-
     @Override
     public void start(Stage primaryStage) {
         // Set stage properties
-
-        primaryStage.setWidth(SCREEN_WIDTH);
-        primaryStage.setHeight(SCREEN_HEIGHT);
+        primaryStage.setWidth(ConfigHandler.getInstance().getConfig("SCREEN_WIDTH"));
+        primaryStage.setHeight(ConfigHandler.getInstance().getConfig("SCREEN_HEIGHT"));
 
         // Create startButton
         primaryStage.setTitle("Simulation");
@@ -43,19 +40,14 @@ public class Application extends javafx.application.Application {
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                // Create plot for grid
-                Plot plot = new Plot();
-
-                // Create the grid matrix
-                int gridWidth = 16;
-                int gridHeight = 16;
-                Board board = new Board(gridWidth, gridHeight, plot);
+                Board board = new Board();
+                board.addPlot(new Plot());
 
                 // Create the area.pole.Pole at the top and bottom
-                Area NorthPole = new NorthPole(null, null).getArea(gridWidth, gridHeight);
-                Area SouthPole = new SouthPole(null, null).getArea(gridWidth, gridHeight);
+                Area NorthPole = new NorthPole(null, null).getArea();
+                Area SouthPole = new SouthPole(null, null).getArea();
                 // Create the area.Plains centered in the grid
-                Area plains = new Plains(null, null).getArea(gridWidth, gridHeight);
+                Area plains = new Plains(null, null).getArea();
 
                 // Add areas to board matrix
                 board.addArea(NorthPole);
@@ -65,11 +57,19 @@ public class Application extends javafx.application.Application {
                 board.setFoodPreferredTiles();
 
                 // Create grid visualization in window
-                BoardView boardView = new BoardView(board, SCREEN_WIDTH / (float) 1.75, SCREEN_HEIGHT - 20);
+                BoardView boardView = new BoardView(board,
+                        ConfigHandler.getInstance().getConfig("SCREEN_WIDTH") / (float) 1.75,
+                        ConfigHandler.getInstance().getConfig("SCREEN_HEIGHT") - 20
+                );
                 StackPane boardContainer = boardView.createBoard();
 
-                // Create plot visualization
-                StackPane plotContainer = plot.getLineChart();
+                // Create plot visualization - if plot exists
+                StackPane plotContainer;
+                if (board.getPlot() != null) {
+                    plotContainer = board.getPlot().getLineChart();
+                } else {
+                    plotContainer = new StackPane();
+                }
 
                 // Create a scene
                 HBox root = new HBox();
@@ -84,7 +84,7 @@ public class Application extends javafx.application.Application {
                 // Create animals
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
                 for (int i = 0; i < 50; i++) {
-                    animalHandler.createAnimal(new Point(Random.getRandom(0, board.getWidth()-1), Random.getRandom(0, board.getHeight()-1)));
+                    animalHandler.createAnimal(new Point());
                 }
 
                 // Run the simulation
