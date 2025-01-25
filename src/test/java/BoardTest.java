@@ -2,6 +2,7 @@ import board.Board;
 import board.Tile;
 import chart.Plot;
 import org.junit.jupiter.api.Test;
+import utils.ConfigHandler;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,14 +10,12 @@ class BoardTest {
 
     @Test
     void testBoardInitializationCreatesCorrectDimensions() {
-        int rows = 10;
-        int columns = 15;
         Board board = new Board();
 
         // Verify dimensions of the board matrix
         Tile[][] matrix = board.getBoardMatrix();
-        assertEquals(rows, matrix.length); // Rows
-        assertEquals(columns, matrix[0].length); // Columns
+        assertEquals(ConfigHandler.getInstance().getConfig("BOARD_WIDTH"), matrix.length); // Rows
+        assertEquals(ConfigHandler.getInstance().getConfig("BOARD_HEIGHT"), matrix[0].length); // Columns
     }
 
     @Test
