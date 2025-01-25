@@ -183,22 +183,22 @@ public class AnimalHandler {
                     }
                 }
 
-                // Get first best animal to reproduce
-                Animal animal1 = resolveTileWar(tile, stuffedAnimalList);
+                List<Animal> sortedStuffedAnimalList = new ArrayList<>();
+                for (int k = 0; k < stuffedAnimalList.size(); k++) {
+                    Animal bestAnimal = resolveTileWar(tile, stuffedAnimalList);
+                    sortedStuffedAnimalList.add(bestAnimal);
+                    stuffedAnimalList.remove(bestAnimal);
+                }
 
-                if (animal1 != null) {
-                    // Filter 'stuffedAnimalList' to not include 'animal1'
-                    List<Animal> filteredStuffedAnimalList = new ArrayList<>();
-                    for (Animal animal : stuffedAnimalList) {
-                        if (!animal.equals(animal1)) {
-                            filteredStuffedAnimalList.add(animal);
+                while (sortedStuffedAnimalList.size() > 1) {
+                    // Get first best animal to reproduce
+                    Animal animal1 = sortedStuffedAnimalList.removeFirst();
+                    if (animal1 != null) {
+                        // Get second best animal to reproduce
+                        Animal animal2 = sortedStuffedAnimalList.removeFirst();
+                        if (animal2 != null) {
+                            reproduceAnimals(tile, animal1, animal2);
                         }
-                    }
-
-                    // Get second best animal to reproduce
-                    Animal animal2 = resolveTileWar(tile, filteredStuffedAnimalList);
-                    if (animal2 != null) {
-                        reproduceAnimals(tile, animal1, animal2);
                     }
                 }
             }

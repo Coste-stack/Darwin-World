@@ -83,7 +83,7 @@ public class Application extends javafx.application.Application {
 
                 // Create animals
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 50; i++) {
                     animalHandler.createAnimal(new Point(Random.getRandom(0, board.getWidth()-1), Random.getRandom(0, board.getHeight()-1)));
                 }
 
