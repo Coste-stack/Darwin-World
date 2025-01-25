@@ -24,7 +24,7 @@ public abstract class Area {
     public Color getTileColor() {
         return this.tileColor;
     }
-    public int getFoodPreferedTileChance() {
+    public int getFoodPreferredTileChance() {
         return this.FOOD_PREFERRED_TILE_CHANCE;
     }
 

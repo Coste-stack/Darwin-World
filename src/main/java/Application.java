@@ -6,7 +6,6 @@ import board.Board;
 import board.BoardView;
 import chart.Plot;
 import utils.ConfigHandler;
-import utils.Random;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

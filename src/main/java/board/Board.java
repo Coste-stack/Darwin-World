@@ -15,7 +15,7 @@ public class Board {
     private final int BOARD_WIDTH;
     private final int BOARD_HEIGHT;
     private Plot plot;
-    private final static int foodSpawnInterval = 2; // Determines the interval (in turns) between food spawn
+    private final static int foodSpawnTurnInterval = ConfigHandler.getInstance().getConfig("FOOD_SPAWN_TURN_INTERVAL"); // Determines the interval (in turns) between food spawn
     private int foodSpawnCounter;
 
     public Board() {
@@ -23,7 +23,7 @@ public class Board {
         this.BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
         this.boardMatrix = new Tile[BOARD_WIDTH][BOARD_HEIGHT];
 
-        this.foodSpawnCounter = foodSpawnInterval;
+        this.foodSpawnCounter = foodSpawnTurnInterval;
         Area grassfield = new Grassfield(null, null).getArea();
 
         for (int i = 0; i < BOARD_WIDTH; i++) {
@@ -74,7 +74,7 @@ public class Board {
             for (int j = 0; j < this.BOARD_HEIGHT; j++) {
                 Tile tile = this.boardMatrix[i][j];
                 tile.setFoodPreferred(false);
-                if (Random.getRandom(1, 500) <= tile.getArea().getFoodPreferedTileChance()) {
+                if (Random.getRandom(1, 500) <= tile.getArea().getFoodPreferredTileChance()) {
                     tile.setFoodPreferred(true);
                 }
             }
@@ -83,7 +83,7 @@ public class Board {
 
     public void setFoodRandomly() {
         foodSpawnCounter++;
-        if (foodSpawnCounter > foodSpawnInterval-1) {
+        if (foodSpawnCounter > foodSpawnTurnInterval-1) {
             foodSpawnCounter = 0;
             for (int i = 0; i < this.BOARD_WIDTH; i++) {
                 for (int j = 0; j < this.BOARD_HEIGHT; j++) {

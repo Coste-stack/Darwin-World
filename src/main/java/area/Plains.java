@@ -4,10 +4,13 @@ import javafx.scene.paint.Color;
 import utils.ConfigHandler;
 
 public class Plains extends Area {
-    private final static int FOOD_PREFERRED_TILE_CHANCE = 60;
-
     public Plains(Point topLeft, Point bottomRight) {
-        super(topLeft, bottomRight, Color.GREEN.brighter(), FOOD_PREFERRED_TILE_CHANCE);
+        super(
+                topLeft,
+                bottomRight,
+                Color.GREEN.brighter(),
+                ConfigHandler.getInstance().getConfig("PLAINS_FOOD_PREFERRED_TILE_CHANCE")
+        );
     }
 
     @Override

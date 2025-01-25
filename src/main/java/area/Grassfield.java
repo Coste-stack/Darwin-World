@@ -4,10 +4,13 @@ import javafx.scene.paint.Color;
 import utils.ConfigHandler;
 
 public class Grassfield extends Area {
-    private final static int FOOD_PREFERRED_TILE_CHANCE = 30;
-
     public Grassfield(Point topLeft, Point bottomRight) {
-        super(topLeft, bottomRight, Color.LIGHTGREEN, FOOD_PREFERRED_TILE_CHANCE);
+        super(
+                topLeft,
+                bottomRight, 
+                Color.LIGHTGREEN,
+                ConfigHandler.getInstance().getConfig("GRASSFIELD_FOOD_PREFERRED_TILE_CHANCE")
+        );
     }
 
     @Override

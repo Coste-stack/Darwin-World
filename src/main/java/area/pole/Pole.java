@@ -4,13 +4,18 @@ import area.Area;
 import area.Point;
 
 import javafx.scene.paint.Color;
+import utils.ConfigHandler;
 
 public abstract class Pole extends Area {
     private final PoleType poleType;
-    private final static int FOOD_PREFERRED_TILE_CHANCE = 5;
 
     public Pole(Point topLeft, Point bottomRight, PoleType poleType) {
-        super(topLeft, bottomRight, Color.LIGHTBLUE, FOOD_PREFERRED_TILE_CHANCE);
+        super(
+                topLeft,
+                bottomRight,
+                Color.LIGHTBLUE,
+                ConfigHandler.getInstance().getConfig("POLE_FOOD_PREFERRED_TILE_CHANCE")
+        );
         this.poleType = poleType;
     }
 
