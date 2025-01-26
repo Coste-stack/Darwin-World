@@ -27,7 +27,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainClass.set("Application")
+    mainClass.set("application.Main")
 }
 
 javafx {
