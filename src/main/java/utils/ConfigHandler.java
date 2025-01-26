@@ -23,8 +23,16 @@ public final class ConfigHandler {
         return instance;
     }
 
+    public Map<String, Integer> getConfig() {
+        return configMap;
+    }
+
     public int getConfig(String key) {
         return configMap.get(key);
+    }
+
+    public void changeConfig(String key, int value) {
+        configMap.replace(key, value);
     }
 
     private void loadConfig() {

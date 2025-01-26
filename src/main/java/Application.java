@@ -5,16 +5,19 @@ import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
 import chart.Plot;
+import javafx.geometry.Orientation;
 import utils.ConfigHandler;
 
+import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.animation.Timeline;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -31,10 +34,50 @@ public class Application extends javafx.application.Application {
         primaryStage.setWidth(ConfigHandler.getInstance().getConfig("SCREEN_WIDTH"));
         primaryStage.setHeight(ConfigHandler.getInstance().getConfig("SCREEN_HEIGHT"));
 
+        // Create config input field container
+        FlowPane inputContainer = new FlowPane(Orientation.VERTICAL);
+        inputContainer.setHgap(20);
+        inputContainer.setVgap(10);
+
+        // Add all values in config to form
+        ConfigHandler.getInstance().getConfig().forEach((key, value) -> {
+            VBox formItem = new VBox();
+
+            Label label = new Label(key);
+            label.setStyle("-fx-text-fill:white;");
+            formItem.getChildren().add(label);
+
+            TextField input = new TextField(value.toString());
+            input.setStyle("-fx-background-color:#4A64A4; -fx-text-fill:white;");
+            formItem.getChildren().add(input);
+
+            inputContainer.getChildren().add(formItem);
+        });
+
         // Create startButton
         primaryStage.setTitle("Simulation");
         Button startButton = new Button();
+        startButton.setStyle("-fx-background-color:#4A64A4; -fx-text-fill:white;");
+        startButton.setPadding(new Insets(10, 10, 10, 10));
         startButton.setText("Show Gameboard");
+        // Put the button in a container
+        HBox buttonContainer = new HBox();
+        buttonContainer.getChildren().add(startButton);
+        buttonContainer.setAlignment(Pos.CENTER_LEFT);
+
+        // Create whole form container
+        VBox formLayout = new VBox();
+        formLayout.setMaxWidth(formLayout.getWidth());
+        formLayout.setAlignment(Pos.CENTER);
+        formLayout.setPadding(new Insets(10, 10, 10, 10));
+        formLayout.getChildren().addAll(inputContainer, buttonContainer);
+
+        // Show scene
+        StackPane root = new StackPane(formLayout);
+        root.setStyle("-fx-background-color:#282A3A");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
         // Add boardView on startButton click
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -78,8 +121,6 @@ public class Application extends javafx.application.Application {
                 HBox.setHgrow(plotContainer, Priority.ALWAYS);
                 HBox.setHgrow(boardContainer, Priority.ALWAYS);
 
-                Scene mainScene = new Scene(root);
-
                 // Create animals
                 AnimalHandler animalHandler = new AnimalHandler(board, boardView);
                 for (int i = 0; i < 50; i++) {
@@ -98,13 +139,9 @@ public class Application extends javafx.application.Application {
                 timeline.setCycleCount(Animation.INDEFINITE);
                 timeline.play();
 
+                Scene mainScene = new Scene(root);
                 primaryStage.setScene(mainScene);
             }
         });
-        StackPane root = new StackPane(); // create a layout
-        root.getChildren().add(startButton); // add startButton to it
-        // Create and show scene
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
     }
 }
