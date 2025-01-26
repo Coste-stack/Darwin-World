@@ -8,8 +8,8 @@ public class Point {
     private int y;
 
     public Point() {
-        this.x = Random.getRandom(0, ConfigHandler.getInstance().getConfig("BOARD_WIDTH")-1);
-        this.y = Random.getRandom(0, ConfigHandler.getInstance().getConfig("BOARD_HEIGHT")-1);
+        this.x = Random.getRandom(0, ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH")-1);
+        this.y = Random.getRandom(0, ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT")-1);
     }
 
     public Point(int x, int y) {

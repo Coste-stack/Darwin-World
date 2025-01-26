@@ -11,8 +11,8 @@ public class NorthPole extends Pole {
 
     @Override
     public Area getArea() {
-        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
-        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT");
 
         return new NorthPole(
             new Point(0, 0),

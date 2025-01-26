@@ -15,12 +15,12 @@ public class Board {
     private final int BOARD_WIDTH;
     private final int BOARD_HEIGHT;
     private Plot plot;
-    private final static int foodSpawnTurnInterval = ConfigHandler.getInstance().getConfig("FOOD_SPAWN_TURN_INTERVAL"); // Determines the interval (in turns) between food spawn
+    private final static int foodSpawnTurnInterval = ConfigHandler.getInstance().getConfigValue("FOOD_SPAWN_TURN_INTERVAL"); // Determines the interval (in turns) between food spawn
     private int foodSpawnCounter;
 
     public Board() {
-        this.BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
-        this.BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+        this.BOARD_WIDTH = ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH");
+        this.BOARD_HEIGHT = ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT");
         this.boardMatrix = new Tile[BOARD_WIDTH][BOARD_HEIGHT];
 
         this.foodSpawnCounter = foodSpawnTurnInterval;
@@ -90,11 +90,11 @@ public class Board {
                     Tile tile = this.boardMatrix[i][j];
                     if (!tile.hasFood()) {
                         if (tile.isFoodPreferred()) {
-                            if (Random.getRandom(1, 500) <= ConfigHandler.getInstance().getConfig("PRIMARY_FOOD_CHANCE")) {
+                            if (Random.getRandom(1, 500) <= ConfigHandler.getInstance().getConfigValue("PRIMARY_FOOD_CHANCE")) {
                                 tile.setHasFood(true);
                             }
                         } else {
-                            if (Random.getRandom(1, 500) <= ConfigHandler.getInstance().getConfig("SECONDARY_FOOD_CHANCE")) {
+                            if (Random.getRandom(1, 500) <= ConfigHandler.getInstance().getConfigValue("SECONDARY_FOOD_CHANCE")) {
                                 tile.setHasFood(true);
                             }
                         }

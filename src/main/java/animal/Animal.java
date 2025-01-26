@@ -26,8 +26,8 @@ public class Animal {
         this.direction = Direction.getRandomDirection();
         this.isAlive = true;
         this.age = 0;
-        this.energy = ConfigHandler.getInstance().getConfig("DEFAULT_ENERGY");
-        this.energyConsumption = ConfigHandler.getInstance().getConfig("DEFAULT_ENERGY_CONSUMPTION");
+        this.energy = ConfigHandler.getInstance().getConfigValue("DEFAULT_ENERGY");
+        this.energyConsumption = ConfigHandler.getInstance().getConfigValue("DEFAULT_ENERGY_CONSUMPTION");
         this.genotypeList = generateGenotype();
         this.currGenotypeIndex = 0;
     }
@@ -53,12 +53,12 @@ public class Animal {
     }
 
     private int getSkipTurnChance () {
-        int MIN_AGE_TO_SKIP_TURN = ConfigHandler.getInstance().getConfig("MIN_AGE_TO_SKIP_TURN");
+        int MIN_AGE_TO_SKIP_TURN = ConfigHandler.getInstance().getConfigValue("MIN_AGE_TO_SKIP_TURN");
         return Math.min((age - MIN_AGE_TO_SKIP_TURN) * 2, 50);
     }
 
     public void move() {
-        int MIN_AGE_TO_SKIP_TURN = ConfigHandler.getInstance().getConfig("MIN_AGE_TO_SKIP_TURN");
+        int MIN_AGE_TO_SKIP_TURN = ConfigHandler.getInstance().getConfigValue("MIN_AGE_TO_SKIP_TURN");
         if (!(age > MIN_AGE_TO_SKIP_TURN && Random.getRandom(0, 100) < getSkipTurnChance())) {
             // Get direction from genotypes
             this.direction = this.genotypeList[this.currGenotypeIndex];
@@ -106,7 +106,7 @@ public class Animal {
     }
 
     public float getEnergyPercentage() {
-        int MAX_ENERGY = ConfigHandler.getInstance().getConfig("MAX_ENERGY");
+        int MAX_ENERGY = ConfigHandler.getInstance().getConfigValue("MAX_ENERGY");
         if (MAX_ENERGY == 0) {
             return 0;
         }
@@ -127,7 +127,7 @@ public class Animal {
             this.energy += energy;
         }
         // normalize the energy
-        int MAX_ENERGY = ConfigHandler.getInstance().getConfig("MAX_ENERGY");
+        int MAX_ENERGY = ConfigHandler.getInstance().getConfigValue("MAX_ENERGY");
         if (this.energy > MAX_ENERGY) {
             this.energy = MAX_ENERGY;
         }
@@ -150,7 +150,7 @@ public class Animal {
     }
 
     public boolean isStuffed() {
-        return this.energy >= ConfigHandler.getInstance().getConfig("STUFFED_REQUIREMENT");
+        return this.energy >= ConfigHandler.getInstance().getConfigValue("STUFFED_REQUIREMENT");
     }
 
     public boolean isAlive() {

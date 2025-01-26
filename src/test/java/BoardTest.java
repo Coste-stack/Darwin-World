@@ -1,6 +1,5 @@
 import board.Board;
 import board.Tile;
-import chart.Plot;
 import org.junit.jupiter.api.Test;
 import utils.ConfigHandler;
 
@@ -14,8 +13,8 @@ class BoardTest {
 
         // Verify dimensions of the board matrix
         Tile[][] matrix = board.getBoardMatrix();
-        assertEquals(ConfigHandler.getInstance().getConfig("BOARD_WIDTH"), matrix.length); // Rows
-        assertEquals(ConfigHandler.getInstance().getConfig("BOARD_HEIGHT"), matrix[0].length); // Columns
+        assertEquals(ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH"), matrix.length); // Rows
+        assertEquals(ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT"), matrix[0].length); // Columns
     }
 
     @Test

@@ -14,7 +14,7 @@ public abstract class Pole extends Area {
                 topLeft,
                 bottomRight,
                 Color.LIGHTBLUE,
-                ConfigHandler.getInstance().getConfig("POLE_FOOD_PREFERRED_TILE_CHANCE")
+                ConfigHandler.getInstance().getConfigValue("POLE_FOOD_PREFERRED_TILE_CHANCE")
         );
         this.poleType = poleType;
     }

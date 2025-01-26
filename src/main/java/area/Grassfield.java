@@ -9,14 +9,14 @@ public class Grassfield extends Area {
                 topLeft,
                 bottomRight, 
                 Color.LIGHTGREEN,
-                ConfigHandler.getInstance().getConfig("GRASSFIELD_FOOD_PREFERRED_TILE_CHANCE")
+                ConfigHandler.getInstance().getConfigValue("GRASSFIELD_FOOD_PREFERRED_TILE_CHANCE")
         );
     }
 
     @Override
     public Area getArea() {
-        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
-        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT");
 
         return new Grassfield(
                 new Point(0, 0),

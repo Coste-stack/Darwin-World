@@ -31,8 +31,8 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage primaryStage) {
         // Set stage properties
-        primaryStage.setWidth(ConfigHandler.getInstance().getConfig("SCREEN_WIDTH"));
-        primaryStage.setHeight(ConfigHandler.getInstance().getConfig("SCREEN_HEIGHT"));
+        primaryStage.setWidth(ConfigHandler.getInstance().getConfigValue("SCREEN_WIDTH"));
+        primaryStage.setHeight(ConfigHandler.getInstance().getConfigValue("SCREEN_HEIGHT"));
 
         // Create config input field container
         FlowPane inputContainer = new FlowPane(Orientation.VERTICAL);
@@ -40,7 +40,7 @@ public class Application extends javafx.application.Application {
         inputContainer.setVgap(10);
 
         // Add all values in config to form
-        ConfigHandler.getInstance().getConfig().forEach((key, value) -> {
+        ConfigHandler.getInstance().getConfig(true).forEach((key, value) -> {
             VBox formItem = new VBox();
 
             Label label = new Label(key);
@@ -100,8 +100,8 @@ public class Application extends javafx.application.Application {
 
                 // Create grid visualization in window
                 BoardView boardView = new BoardView(board,
-                        ConfigHandler.getInstance().getConfig("SCREEN_WIDTH") / (float) 1.75,
-                        ConfigHandler.getInstance().getConfig("SCREEN_HEIGHT") - 20
+                        ConfigHandler.getInstance().getConfigValue("SCREEN_WIDTH") / (float) 1.75,
+                        ConfigHandler.getInstance().getConfigValue("SCREEN_HEIGHT") - 20
                 );
                 StackPane boardContainer = boardView.createBoard();
 

@@ -9,14 +9,14 @@ public class Plains extends Area {
                 topLeft,
                 bottomRight,
                 Color.GREEN.brighter(),
-                ConfigHandler.getInstance().getConfig("PLAINS_FOOD_PREFERRED_TILE_CHANCE")
+                ConfigHandler.getInstance().getConfigValue("PLAINS_FOOD_PREFERRED_TILE_CHANCE")
         );
     }
 
     @Override
     public Area getArea() {
-        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
-        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT");
 
         int centerX = BOARD_WIDTH / 2;
         int centerY = BOARD_HEIGHT / 2;

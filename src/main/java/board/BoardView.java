@@ -25,8 +25,8 @@ public class BoardView {
     }
 
     public float calcTileSize() {
-        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
-        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT");
 
         float tileSizeWidth = (float) Math.floor(PANEL_WIDTH / BOARD_WIDTH);
         float tileSizeHeight = (float) Math.floor(PANEL_HEIGHT / BOARD_HEIGHT);
@@ -34,8 +34,8 @@ public class BoardView {
     }
 
     public StackPane createBoard() {
-        int BOARD_WIDTH = ConfigHandler.getInstance().getConfig("BOARD_WIDTH");
-        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfig("BOARD_HEIGHT");
+        int BOARD_WIDTH = ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH");
+        int BOARD_HEIGHT = ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT");
 
         // Determine an appropriate tile size
         float tileSize = calcTileSize();

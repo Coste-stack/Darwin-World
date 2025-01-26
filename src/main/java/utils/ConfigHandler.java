@@ -3,17 +3,41 @@ package utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 // Singleton class
 public final class ConfigHandler {
     private static ConfigHandler instance;
-    private final Map<String, Integer> configMap;
+    private final Map<String, ConfigValue> configMap;
+
+    public static class ConfigValue {
+        private int value;
+        private boolean modifiable;
+
+        public ConfigValue(int value, boolean modifiable) {
+            this.value = value;
+            this.modifiable = modifiable;
+        }
+
+        private void setValue(int value) {
+            this.value = value;
+        }
+
+        private int getValue() {
+            return this.value;
+        }
+
+        private boolean isModifiable() {
+            return this.modifiable;
+        }
+    }
 
     private ConfigHandler() {
         configMap = new HashMap<>();
-        loadConfig();
+        loadConfig("static-config.txt", false);
+        loadConfig("dynamic-config.txt", true);
     }
 
     public static ConfigHandler getInstance() {
@@ -23,28 +47,41 @@ public final class ConfigHandler {
         return instance;
     }
 
-    public Map<String, Integer> getConfig() {
-        return configMap;
+    public Map<String, Integer> getConfig(boolean modifiable) {
+        Map<String, Integer> resultMap = new HashMap<>();
+        configMap.forEach((key, value) -> {
+            if (value.isModifiable() == modifiable) {
+                resultMap.put(key, value.getValue());
+            }
+        });
+        return resultMap;
     }
 
-    public int getConfig(String key) {
-        return configMap.get(key);
+    public int getConfigValue(String key) {
+        return configMap.get(key).getValue();
     }
 
     public void changeConfig(String key, int value) {
-        configMap.replace(key, value);
+        ConfigValue configValue = configMap.get(key);
+        if (!configValue.modifiable) {
+            throw new IllegalStateException("Config value " + key + " is not modifiable.");
+        }
+        configValue.setValue(value);
     }
 
-    private void loadConfig() {
-        try (InputStream resourceStream = getClass().getClassLoader().getResourceAsStream("config.txt")) {
+    private void loadConfig(String filename, Boolean modifiable) {
+        try (InputStream resourceStream = getClass().getClassLoader().getResourceAsStream(filename)) {
             if (resourceStream == null) {
-                throw new IllegalStateException("Config file not found in resources");
+                throw new IllegalStateException("File not found in resources: " + filename);
             }
             Properties properties = new Properties();
             properties.load(resourceStream);
-            properties.forEach((key, value) -> configMap.put((String) key, Integer.parseInt((String) value)));
+            properties.forEach((key, value) -> {
+                ConfigValue configValue = new ConfigValue(Integer.parseInt((String) value), modifiable);
+                configMap.put((String) key, configValue);
+            });
         } catch (IOException e) {
-            System.err.println("Error reading config file: " + e.getMessage());
+            System.err.println("Error reading " + filename + " file: " + e.getMessage());
         }
     }
 }
