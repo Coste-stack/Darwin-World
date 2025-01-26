@@ -5,7 +5,9 @@ import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
 import chart.Plot;
-import javafx.geometry.Orientation;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import org.w3c.dom.Text;
 import utils.ConfigHandler;
 
 import javafx.scene.layout.*;
@@ -18,10 +20,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Orientation;
 import javafx.animation.Timeline;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application extends javafx.application.Application {
     public static void main(String[] args) {
@@ -43,7 +50,22 @@ public class Application extends javafx.application.Application {
         ConfigHandler.getInstance().getConfig(true).forEach((key, value) -> {
             VBox formItem = new VBox();
 
-            Label label = new Label(key);
+            // Format the label string
+            String formattedKey = key
+                    .toLowerCase()
+                    .replace("_", " ");
+            String[] words = formattedKey.split("\\s");
+            StringBuilder result = new StringBuilder();
+            for (String word : words) {
+                // Capitalize the first letter for each word
+                result.append(Character.toTitleCase(word.charAt(0)))
+                        .append(word.substring(1))
+                        .append(" ");
+            }
+            formattedKey = result.toString().trim();
+
+            // Create form item elements
+            Label label = new Label(formattedKey);
             label.setStyle("-fx-text-fill:white;");
             formItem.getChildren().add(label);
 
@@ -80,8 +102,47 @@ public class Application extends javafx.application.Application {
 
         // Add boardView on startButton click
         startButton.setOnAction(new EventHandler<ActionEvent>() {
+            private void validateForm() {
+                // Get all TextField from inputContainer
+                List<TextField> inputFields = new ArrayList<>();
+                for (Node node : inputContainer.getChildren()) {
+                    if (node instanceof VBox vbox) {
+                        List<TextField> innerInputFields = vbox.getChildren().stream()
+                                .filter(field -> field instanceof TextField)
+                                .map(field -> (TextField) field)
+                                .toList();
+                        inputFields.addAll(innerInputFields);
+                    }
+                }
+
+                // Check if values in every TextField are valid
+                for (TextField inputField : inputFields) {
+                    if (inputField.getText().isEmpty()) {
+                        String fieldName = ((Label) ((VBox) inputField.getParent()).getChildren().getFirst()).getText();
+                        throw new IllegalArgumentException("Empty field for \"" + fieldName + "\"");
+                    }
+                    try {
+                        Integer.parseInt(inputField.getText());
+                    } catch (NumberFormatException e) {
+                        String fieldName = ((Label) ((VBox) inputField.getParent()).getChildren().getFirst()).getText();
+                        throw new IllegalArgumentException("Invalid input for \"" + fieldName + "\": must be a number.");
+                    }
+                }
+            }
+
             @Override
             public void handle(ActionEvent event) {
+                try {
+                    validateForm();
+                } catch (Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Warning");
+                    alert.setHeaderText(null);
+                    alert.setContentText(e.getMessage());
+                    alert.show();
+                    return;
+                }
+
                 Board board = new Board();
                 board.addPlot(new Plot());
 

@@ -3,7 +3,6 @@ package utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -14,7 +13,7 @@ public final class ConfigHandler {
 
     public static class ConfigValue {
         private int value;
-        private boolean modifiable;
+        private final boolean modifiable;
 
         public ConfigValue(int value, boolean modifiable) {
             this.value = value;
