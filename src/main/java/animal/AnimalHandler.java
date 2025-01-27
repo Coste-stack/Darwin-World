@@ -199,6 +199,7 @@ public class AnimalHandler {
                     }
                 }
                 tile.getAnimalList().removeAll(animalsToRemove);
+                animalList.removeAll(animalsToRemove);
             }
         }
     }
