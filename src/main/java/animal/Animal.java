@@ -20,8 +20,7 @@ public class Animal {
     private int energy;
     private int energyConsumption;
 
-    public Animal(Point position, float radius) {
-        this.animalView = new AnimalView(this, Color.RED, radius);
+    public Animal(Point position) {
         this.position = position;
         this.direction = Direction.getRandomDirection();
         this.isAlive = true;
@@ -169,6 +168,10 @@ public class Animal {
 
     public AnimalView getAnimalView() {
         return this.animalView;
+    }
+
+    public void setAnimalView(AnimalView animalView) {
+        this.animalView = animalView;
     }
 
     @Override

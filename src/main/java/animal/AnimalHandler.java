@@ -4,6 +4,7 @@ import area.Point;
 import board.Board;
 import board.BoardView;
 import board.Tile;
+import javafx.scene.paint.Color;
 import utils.ConfigHandler;
 import utils.Random;
 
@@ -22,10 +23,74 @@ public class AnimalHandler {
     }
 
     public Animal createAnimal(Point position) {
-        Animal animal = new Animal(position, boardView.calcTileSize() / 2);
+        Animal animal = new Animal(position);
+        AnimalView animalView = new AnimalView(animal, generateColorOfGenotype(animal), boardView.calcTileSize() / 2);
+        animal.setAnimalView(animalView);
+
         board.addAnimal(animal);
         animalList.add(animal);
         return animal;
+    }
+
+    private Direction[] generateChildGenotype(Animal animal1, Animal animal2) {
+        final int genotypeSize = animal1.getGenotypeSize();
+        // Child inherits % of parents' genotypes (% is based on their energy)
+        int animal1EnergySize = (int) Math.ceil(animal1.getEnergyPercentage() * genotypeSize);
+        int animal2EnergySize = genotypeSize - animal1EnergySize; // Fill the rest using other parent genotype
+
+        Direction[] genotype = new Direction[genotypeSize];
+        for (int i = 0; i < animal1EnergySize; i++) {
+            genotype[i] = animal1.getGenotype()[Random.getRandom(0, genotypeSize-1)];
+        }
+        for (int i = 0; i < animal2EnergySize; i++) {
+            genotype[i+animal1EnergySize] = animal2.getGenotype()[Random.getRandom(0, genotypeSize-1)];
+        }
+        return genotype;
+    }
+
+    private void createChildAnimal(Animal animal1, Animal animal2) {
+        // Create the child
+        Animal child = this.createAnimal(animal1.getPosition());
+
+        // Use parents' energy
+        int REPRODUCTION_ENERGY_REQUIREMENT = ConfigHandler.getInstance().getConfigValue("REPRODUCTION_ENERGY_REQUIREMENT");
+        int energy1 = animal1.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
+        int energy2 = animal2.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
+        child.setEnergy(energy1+energy2);
+
+        // Create the genotype
+        child.setGenotype(generateChildGenotype(animal1, animal2));
+
+        AnimalView animalView = new AnimalView(child, generateColorOfGenotype(child), boardView.calcTileSize() / 2);
+        child.setAnimalView(animalView);
+
+        board.addAnimal(child);
+        animalList.add(child);
+    }
+
+    private Color generateColorOfGenotype(Animal animal) {
+        int hash = 0;
+        for (Direction direction : animal.getGenotype()) {
+            hash = 31 * hash + direction.ordinal();
+        }
+        double hue = (hash % 360 + 360) % 360;
+        double saturation = 0.75;
+        double brightness = 0.9;
+        return Color.hsb(hue, saturation, brightness);
+    }
+
+    private Color generateColorOfGenotype(Animal animal1, Animal animal2) {
+        int hash = 0;
+        Direction[] genotype1 = animal1.getGenotype();
+        Direction[] genotype2 = animal2.getGenotype();
+        for (int i = 0; i < genotype1.length; i++) {
+            hash = 31 * hash + genotype1[i].ordinal();
+            hash = 31 * hash + genotype2[i % genotype2.length].ordinal();
+        }
+        double hue = (hash % 360 + 360) % 360;
+        double saturation = 0.75;
+        double brightness = 0.9;
+        return Color.hsb(hue, saturation, brightness);
     }
 
     public void runTurn() {
@@ -155,36 +220,11 @@ public class AnimalHandler {
                     stuffedAnimalList.remove(animal1);
                     Animal animal2 = resolveTileWar(tile, stuffedAnimalList);
                     if (animal2 != null) {
-                        reproduceAnimals(tile, animal1, animal2);
+                        createChildAnimal(animal1, animal2);
                     }
                 }
             }
         }
-    }
-
-    private void reproduceAnimals(Tile tile, Animal animal1, Animal animal2) {
-        // Create the child
-        int REPRODUCTION_ENERGY_REQUIREMENT = ConfigHandler.getInstance().getConfigValue("REPRODUCTION_ENERGY_REQUIREMENT");
-        int energy1 = animal1.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
-        int energy2 = animal2.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
-        Animal child = this.createAnimal(animal1.getPosition());
-        child.setEnergy(energy1+energy2);
-
-        final int genotypeSize = animal1.getGenotypeSize();
-        // Child inherits % of parents' genotypes (% is based on their energy)
-        int animal1EnergySize = (int) Math.ceil(animal1.getEnergyPercentage() * genotypeSize);
-        int animal2EnergySize = genotypeSize - animal1EnergySize; // Fill the rest using other parent genotype
-
-        // Create the genotype
-        Direction[] genotypeList = new Direction[genotypeSize];
-        for (int i = 0; i < animal1EnergySize; i++) {
-            genotypeList[i] = animal1.getGenotype()[Random.getRandom(0, genotypeSize-1)];
-        }
-        for (int i = 0; i < animal2EnergySize; i++) {
-            genotypeList[i+animal1EnergySize] = animal2.getGenotype()[Random.getRandom(0, genotypeSize-1)];
-        }
-
-        child.setGenotype(genotypeList);
     }
 
     private void removeDeadAnimals() {

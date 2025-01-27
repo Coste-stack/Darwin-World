@@ -16,7 +16,7 @@ class TileTest {
         Tile tile = new Tile(Color.GREEN);
 
         // Add an animal
-        Animal animal = new Animal(new Point(2, 2), 5);
+        Animal animal = new Animal(new Point(2, 2));
         tile.addAnimal(animal);
 
         // Ensure animal was added
