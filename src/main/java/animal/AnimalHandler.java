@@ -177,7 +177,7 @@ public class AnimalHandler {
                 // Get animals that can reproduce - stuffed
                 List<Animal> stuffedAnimalList = new ArrayList<>();
                 for (Animal animal : tile.getAnimalList()) {
-                    if (animal.isStuffed()) {
+                    if (animal.canReproduce()) {
                         stuffedAnimalList.add(animal);
                     }
                 }

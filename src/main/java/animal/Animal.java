@@ -149,8 +149,8 @@ public class Animal {
         }
     }
 
-    public boolean isStuffed() {
-        return this.energy >= ConfigHandler.getInstance().getConfigValue("STUFFED_REQUIREMENT");
+    public boolean canReproduce() {
+        return this.energy >= ConfigHandler.getInstance().getConfigValue("REPRODUCTION_ENERGY_REQUIREMENT");
     }
 
     public boolean isAlive() {
