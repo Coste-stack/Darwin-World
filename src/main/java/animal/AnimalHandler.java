@@ -165,9 +165,10 @@ public class AnimalHandler {
     private void reproduceAnimals(Tile tile, Animal animal1, Animal animal2) {
         // Create the child
         int REPRODUCTION_ENERGY_REQUIREMENT = ConfigHandler.getInstance().getConfigValue("REPRODUCTION_ENERGY_REQUIREMENT");
-        animal1.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
-        animal2.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
+        int energy1 = animal1.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
+        int energy2 = animal2.subtractEnergy(REPRODUCTION_ENERGY_REQUIREMENT);
         Animal child = this.createAnimal(animal1.getPosition());
+        child.setEnergy(energy1+energy2);
 
         final int genotypeSize = animal1.getGenotypeSize();
         // Child inherits % of parents' genotypes (% is based on their energy)

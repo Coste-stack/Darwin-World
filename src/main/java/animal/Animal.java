@@ -121,9 +121,11 @@ public class Animal {
         this.energyConsumption = energyConsumption;
     }
 
-    public void addEnergy(int energy) {
+    public int addEnergy(int energy) {
+        int added = 0;
         // add it
         if (energy >= 0) {
+            added = this.energy + energy;
             this.energy += energy;
         }
         // normalize the energy
@@ -131,11 +133,14 @@ public class Animal {
         if (this.energy > MAX_ENERGY) {
             this.energy = MAX_ENERGY;
         }
+        return added;
     }
 
-    public void subtractEnergy(int energy) {
+    public int subtractEnergy(int energy) {
+        int subtracted = 0;
         // subtract it
         if (energy > 0) {
+            subtracted = Math.max(this.energy - energy, 0);
             this.energy -= energy;
         }
         // normalize current energy
@@ -147,6 +152,11 @@ public class Animal {
             isAlive = false;
             animalView = null;
         }
+        return subtracted;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
     }
 
     public boolean canReproduce() {
