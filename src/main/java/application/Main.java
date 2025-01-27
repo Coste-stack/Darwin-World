@@ -7,6 +7,8 @@ import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
 import chart.Plot;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import utils.ConfigHandler;
 
 import javafx.scene.layout.*;
@@ -44,14 +46,23 @@ public class Main extends javafx.application.Application {
             public void handle(ActionEvent event) {
                 try {
                     form.validateForm();
-                } catch (Exception e) {
+                    form.changeConfig();
+                } catch (IllegalArgumentException e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Warning");
                     alert.setHeaderText(null);
                     alert.setContentText(e.getMessage());
                     alert.show();
                     return;
+                } catch (Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText(e.getMessage());
+                    alert.show();
+                    return;
                 }
+
 
                 Board board = new Board();
                 board.addPlot(new Plot());

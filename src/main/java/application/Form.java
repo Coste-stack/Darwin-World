@@ -31,6 +31,10 @@ public class Form {
         return this.formButton;
     }
 
+    public List<VBox> getFormItemList() {
+        return this.formItemList;
+    }
+
     public void validateForm() {
         // Check if values in every TextField are valid
         for (VBox formItem : formItemList) {
@@ -44,6 +48,22 @@ public class Form {
                 Integer.parseInt(inputField.getText());
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("Invalid input for \"" + fieldName + "\": must be a number.");
+            }
+        }
+    }
+
+    public void changeConfig() {
+        // Iterate through inputed values and change the config
+        for (VBox vbox : this.formItemList) {
+            // Get variables from form items in vbox
+            String key = ((Label) vbox.getChildren().getFirst()).getText();
+            int value = Integer.parseInt(((TextField) vbox.getChildren().get(1)).getText());
+            // Format key to be the same as config
+            key = key
+                    .toUpperCase()
+                    .replace(" ", "_");
+            if (value != ConfigHandler.getInstance().getConfigValue(key)) {
+                ConfigHandler.getInstance().changeConfig(key, value);
             }
         }
     }
