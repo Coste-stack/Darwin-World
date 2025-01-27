@@ -1,6 +1,5 @@
 package area;
 
-import javafx.scene.paint.Color;
 import utils.ConfigHandler;
 
 public class Plains extends Area {
@@ -8,7 +7,7 @@ public class Plains extends Area {
         super(
                 topLeft,
                 bottomRight,
-                Color.GREEN.brighter(),
+                "#4CAF50",
                 ConfigHandler.getInstance().getConfigValue("PLAINS_FOOD_PREFERRED_TILE_CHANCE")
         );
     }
@@ -18,15 +17,9 @@ public class Plains extends Area {
         int BOARD_WIDTH = ConfigHandler.getInstance().getConfigValue("BOARD_WIDTH");
         int BOARD_HEIGHT = ConfigHandler.getInstance().getConfigValue("BOARD_HEIGHT");
 
-        int centerX = BOARD_WIDTH / 2;
-        int centerY = BOARD_HEIGHT / 2;
-
-        int offsetWidth = BOARD_WIDTH / 4;
-        int offsetHeight = BOARD_HEIGHT / 4;
-
         return new Plains(
-                new Point(centerX - offsetWidth, centerY - offsetHeight),
-                new Point(centerX + offsetWidth, centerY + offsetHeight)
+                new Point(0, 0),
+                new Point(BOARD_WIDTH, BOARD_HEIGHT)
         );
     }
 

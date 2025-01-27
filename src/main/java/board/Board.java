@@ -2,8 +2,8 @@ package board;
 
 import animal.Animal;
 import area.Area;
-import area.Grassfield;
 
+import area.Plains;
 import chart.Plot;
 import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
@@ -24,13 +24,13 @@ public class Board {
         this.boardMatrix = new Tile[BOARD_WIDTH][BOARD_HEIGHT];
 
         this.foodSpawnCounter = foodSpawnTurnInterval;
-        Area grassfield = new Grassfield(null, null).getArea();
+        Area plains = new Plains(null, null).getArea();
 
         for (int i = 0; i < BOARD_WIDTH; i++) {
             for (int j = 0; j < BOARD_HEIGHT; j++) {
                 Color fillColor = (i + j) % 2 == 0 ? Color.GRAY : Color.BLACK;
-                Tile tile = new Tile(fillColor);
-                tile.setArea(grassfield);
+                Tile tile = new Tile(utils.FxUtils.toRGBCode(fillColor));
+                tile.setArea(plains);
                 this.boardMatrix[i][j] = tile;
             }
         }

@@ -1,0 +1,63 @@
+/* Set overall chart background */
+.chart {
+    -fx-background-color: #282A3A;
+}
+/* Set plot area background */
+.chart-plot-background {
+    -fx-background-color: #4A64A4;
+}
+
+/* Style axes and labels */
+.axis-label {
+    -fx-text-fill: white;
+}
+.axis-tick-label {
+    -fx-text-fill: white;
+}
+.axis {
+    -fx-tick-label-fill: white;
+    -fx-tick-mark-visible: true;
+    -fx-tick-length: 5; /* Adjust as needed */
+    -fx-axis-line-color: white;
+}
+
+/* Style grid lines */
+.chart-vertical-grid-lines {
+    -fx-stroke: #7d8bb9;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #7d8bb9;
+}
+.chart-series-line {
+    -fx-stroke-width: 2px; /* Set width of series line */
+}
+
+/* Style specific to first series (index 0 - Animals) */
+.default-color0.chart-series-line {
+    -fx-stroke: #FFA500;
+}
+/* Style specific to second series (index 1 - Food) */
+.default-color1.chart-series-line {
+    -fx-stroke: #00FF7F;
+}
+
+/* Style legend background */
+.chart-legend {
+    -fx-background-color: #4A64A4;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+/* Change legend text color */
+.chart-legend-item {
+    -fx-text-fill: white;
+}
+/* Customize chart legend to match series colors */
+/* Legend for second series */
+.chart-legend-item-symbol.default-color0 {
+    -fx-background-color: #FFA500; /* Bright orange */
+}
+/* Legend for second series */
+.chart-legend-item-symbol.default-color1 {
+    -fx-background-color: #00FF7F;  /* Bright cyan-green */
+}

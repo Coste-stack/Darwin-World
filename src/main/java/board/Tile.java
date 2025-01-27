@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tile {
-    private static final Color foodColor = Color.GREEN;
-    private Color fillColor;
+    private static final String foodColor = utils.FxUtils.toRGBCode(Color.GREEN);
+    private String fillColor;
     private boolean isFoodPreferred;
 
     private List<Animal> animalList;
     private Area area;
     private boolean hasFood;
 
-    public Tile(Color fillColor) {
+    public Tile(String fillColor) {
         animalList = new ArrayList<>();
         this.fillColor = fillColor;
         this.hasFood = false;
     }
-    public Tile(Color fillColor, boolean hasFood) {
+    public Tile(String fillColor, boolean hasFood) {
         animalList = new ArrayList<>();
         this.fillColor = fillColor;
         this.hasFood = hasFood;
@@ -30,10 +30,10 @@ public class Tile {
         }
     }
 
-    public Color getFillColor() {
+    public String getFillColor() {
         return this.fillColor;
     }
-    public void setFillColor(Color fillColor) {
+    public void setFillColor(String fillColor) {
         this.fillColor = fillColor;
     }
 

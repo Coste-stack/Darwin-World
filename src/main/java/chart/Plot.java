@@ -37,7 +37,7 @@ public class Plot {
         lineChart.getData().add(foodSeries);
 
         // Add the CSS file to the chart
-        lineChart.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        lineChart.getStylesheets().add(getClass().getResource("/Chart.css").toExternalForm());
     }
 
     public StackPane getLineChart() {

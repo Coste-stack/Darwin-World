@@ -69,9 +69,7 @@ public class BoardView {
             for (int j = 0; j < BOARD_HEIGHT; j++) {
                 // Use StackPane as a tile
                 StackPane tile = new StackPane();
-                tile.setStyle("-fx-background-color: " +
-                        toRgbString(gridMatrix.getBoardMatrix()[i][j].getFillColor()) +
-                        ";");
+                tile.setStyle("-fx-background-color: " + gridMatrix.getBoardMatrix()[i][j].getFillColor() + ";");
 
                 gridPanel.getChildren().add(tile); // Add each tile to the TilePane
             }
@@ -84,14 +82,6 @@ public class BoardView {
         root.setMaxSize(PANEL_WIDTH, PANEL_HEIGHT);
         root.getChildren().add(container);
         return root;
-    }
-
-    // Helper method to convert JavaFX Color to CSS-compatible RGB string
-    private String toRgbString(Color color) {
-        return "rgb(" +
-                (int) (color.getRed() * 255) + "," +
-                (int) (color.getGreen() * 255) + "," +
-                (int) (color.getBlue() * 255) + ")";
     }
 
     public void refreshBoard() {
@@ -117,7 +107,7 @@ public class BoardView {
 
                     // Create tile
                     GridPane tileView = new GridPane();
-                    tileView.setStyle("-fx-background-color: " + toRgbString(gridMatrix.getBoardMatrix()[i][j].getFillColor()) + ";");
+                    tileView.setStyle("-fx-background-color: " + gridMatrix.getBoardMatrix()[i][j].getFillColor() + ";");
 
                     int row = 0;
                     int column = 0;

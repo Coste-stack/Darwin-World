@@ -13,7 +13,7 @@ class TileTest {
 
     @Test
     void testAddAnimalToTile() {
-        Tile tile = new Tile(Color.GREEN);
+        Tile tile = new Tile(utils.FxUtils.toRGBCode(Color.GREEN));
 
         // Add an animal
         Animal animal = new Animal(new Point(2, 2));
@@ -26,7 +26,7 @@ class TileTest {
 
     @Test
     void testTileWithFoodAllowsConsumption() {
-        Tile tile = new Tile(Color.GRAY);
+        Tile tile = new Tile(utils.FxUtils.toRGBCode(Color.GRAY));
         Area plains = new Plains(null, null);
         tile.setArea(plains);
 

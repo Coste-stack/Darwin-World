@@ -1,14 +1,12 @@
 package area;
 
-import javafx.scene.paint.Color;
-
 public abstract class Area {
     protected final Point topLeft;
     protected final Point bottomRight;
-    protected final Color tileColor;
+    protected final String tileColor;
     protected final int FOOD_PREFERRED_TILE_CHANCE; // Chance for food to spawn (0-100)
 
-    public Area(Point topLeft, Point bottomRight, Color tileColor, int FOOD_PREFERRED_TILE_CHANCE) {
+    public Area(Point topLeft, Point bottomRight, String tileColor, int FOOD_PREFERRED_TILE_CHANCE) {
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
         this.tileColor = tileColor;
@@ -21,7 +19,7 @@ public abstract class Area {
     public Point getBottomRight() {
         return this.bottomRight;
     }
-    public Color getTileColor() {
+    public String getTileColor() {
         return this.tileColor;
     }
     public int getFoodPreferredTileChance() {

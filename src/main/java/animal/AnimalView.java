@@ -24,7 +24,7 @@ public class AnimalView {
 
     private void createAnimal(float radius) {
         Circle innerCircle = new Circle();
-        innerCircle.setFill(Color.WHITE);
+        innerCircle.setFill(Color.web("#bab6ae"));
         innerCircle.setCenterX(radius);
         innerCircle.setCenterY(radius);
         innerCircle.setRadius(radius * 0.8);

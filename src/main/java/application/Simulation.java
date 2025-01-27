@@ -2,6 +2,7 @@ package application;
 
 import animal.AnimalHandler;
 import area.Area;
+import area.Grassfield;
 import area.Plains;
 import area.Point;
 import area.pole.NorthPole;
@@ -9,6 +10,7 @@ import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
 import chart.Plot;
+import javafx.geometry.Insets;
 import utils.ConfigHandler;
 
 import javafx.scene.layout.StackPane;
@@ -41,12 +43,12 @@ public class Simulation {
         Area NorthPole = new NorthPole(null, null).getArea();
         Area SouthPole = new SouthPole(null, null).getArea();
         // Create the area.Plains centered in the grid
-        Area plains = new Plains(null, null).getArea();
+        Area grassfield = new Grassfield(null, null).getArea();
 
         // Add areas to board matrix
         board.addArea(NorthPole);
         board.addArea(SouthPole);
-        board.addArea(plains);
+        board.addArea(grassfield);
         // Determine preferred food tiles on board
         board.setFoodPreferredTiles();
 
@@ -64,9 +66,11 @@ public class Simulation {
         } else {
             plotContainer = new StackPane();
         }
+        plotContainer.setPadding(new Insets(10, 0, 10,0));
 
         // Create a scene
         HBox root = new HBox();
+        root.setStyle("-fx-background-color: #282A3A");
         root.getChildren().addAll(plotContainer, boardContainer);
 
         // Make both components scalable
