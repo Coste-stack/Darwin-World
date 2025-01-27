@@ -24,7 +24,7 @@ public final class ConfigHandler {
             this.value = value;
         }
 
-        private int getValue() {
+        public int getValue() {
             return this.value;
         }
 
@@ -48,6 +48,7 @@ public final class ConfigHandler {
 
     public Map<String, Integer> getConfig(boolean modifiable) {
         Map<String, Integer> resultMap = new HashMap<>();
+        ConfigValue[] configArray = new ConfigValue[configMap.size()];
         configMap.forEach((key, value) -> {
             if (value.isModifiable() == modifiable) {
                 resultMap.put(key, value.getValue());

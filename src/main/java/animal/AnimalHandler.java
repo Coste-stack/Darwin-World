@@ -32,6 +32,7 @@ public class AnimalHandler {
         moveAnimals();
         eatFood();
         reproduceAnimals();
+        removeDeadAnimals();
     }
 
     public void moveAnimals() {
@@ -82,14 +83,9 @@ public class AnimalHandler {
                 animal.getPosition().setY(newY);
             }
 
-            // Check if this tile has food (add energy and remove food)
-            if (board.getBoardMatrix()[newX][newY].hasFood()) {
-                animal.addEnergy(ConfigHandler.getInstance().getConfigValue("ENERGY_FOOD_GAIN"));
-                board.getBoardMatrix()[newX][newY].setHasFood(false);
-            }
-
-            // Remove the animal from its previous position in the grid matrix
+            // Move the animal from its prevPos to newPos in the grid matrix
             board.getBoardMatrix()[prevX][prevY].removeAnimal(animal);
+            board.getBoardMatrix()[newX][newY].addAnimal(animal);
         }
     }
 
@@ -125,10 +121,6 @@ public class AnimalHandler {
     }
 
     private void eatFood() {
-        // Temporary list to store animals to be removed
-        // (cant remove in the middle of iterations)
-        List<Animal> animalsToRemove = new ArrayList<>();
-
         for (int i = 0; i < board.getWidth(); i++) {
             for (int j = 0; j < board.getHeight(); j++) {
                 Tile tile = board.getBoardMatrix()[i][j];
@@ -143,30 +135,6 @@ public class AnimalHandler {
                 }
             }
         }
-
-        for (Animal animal : animalList) {
-            int newX = animal.getPosition().getX();
-            int newY = animal.getPosition().getY();
-
-            // Check if this tile has food (add energy and remove food)
-            if (board.getBoardMatrix()[newX][newY].hasFood()) {
-                animal.addEnergy(ConfigHandler.getInstance().getConfigValue("ENERGY_FOOD_GAIN"));
-                board.getBoardMatrix()[newX][newY].setHasFood(false);
-            }
-
-            // Log the animal properties
-            //System.out.println(animalList.indexOf(animal) + " - " + animal);
-
-            if (animal.isAlive()) {
-                // Place the animal in the new position in the grid matrix
-                board.getBoardMatrix()[newX][newY].addAnimal(animal);
-            } else {
-                animalsToRemove.add(animal);
-            }
-        }
-
-        // Remove animals outside iterations
-        animalList.removeAll(animalsToRemove);
     }
 
     private void reproduceAnimals() {
@@ -182,22 +150,12 @@ public class AnimalHandler {
                     }
                 }
 
-                List<Animal> sortedStuffedAnimalList = new ArrayList<>();
-                for (int k = 0; k < stuffedAnimalList.size(); k++) {
-                    Animal bestAnimal = resolveTileWar(tile, stuffedAnimalList);
-                    sortedStuffedAnimalList.add(bestAnimal);
-                    stuffedAnimalList.remove(bestAnimal);
-                }
-
-                while (sortedStuffedAnimalList.size() > 1) {
-                    // Get first best animal to reproduce
-                    Animal animal1 = sortedStuffedAnimalList.removeFirst();
-                    if (animal1 != null) {
-                        // Get second best animal to reproduce
-                        Animal animal2 = sortedStuffedAnimalList.removeFirst();
-                        if (animal2 != null) {
-                            reproduceAnimals(tile, animal1, animal2);
-                        }
+                Animal animal1 = resolveTileWar(tile, stuffedAnimalList);
+                if (animal1 != null) {
+                    stuffedAnimalList.remove(animal1);
+                    Animal animal2 = resolveTileWar(tile, stuffedAnimalList);
+                    if (animal2 != null) {
+                        reproduceAnimals(tile, animal1, animal2);
                     }
                 }
             }
@@ -226,6 +184,22 @@ public class AnimalHandler {
         }
 
         child.setGenotype(genotypeList);
+    }
+
+    private void removeDeadAnimals() {
+        for (int i = 0; i < board.getWidth(); i++) {
+            for (int j = 0; j < board.getHeight(); j++) {
+                Tile tile = board.getBoardMatrix()[i][j];
+
+                List<Animal> animalsToRemove = new ArrayList<>();
+                for (Animal animal : tile.getAnimalList()) {
+                    if (!animal.isAlive()) {
+                        animalsToRemove.add(animal);
+                    }
+                }
+                tile.getAnimalList().removeAll(animalsToRemove);
+            }
+        }
     }
 
     public List<Animal> getAnimalList() {
