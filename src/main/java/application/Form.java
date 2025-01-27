@@ -90,21 +90,22 @@ public class Form {
         inputContainer.setVgap(10);
 
         // Add all values in config to form
-        ConfigHandler.getInstance().getConfig(true).forEach((key, value) -> {
+        List<String> configKeyList = ConfigHandler.getInstance().getOrderedConfigList(true);
+        for (String configKey : configKeyList) {
             VBox formItem = new VBox();
 
             // Create form item elements
-            Label label = new Label(formatString(key));
+            Label label = new Label(formatString(configKey));
             label.setStyle("-fx-text-fill:white;");
             formItem.getChildren().add(label);
 
-            TextField input = new TextField(value.toString());
+            TextField input = new TextField(Integer.toString(ConfigHandler.getInstance().getConfigValue(configKey)));
             input.setStyle("-fx-background-color:#4A64A4; -fx-text-fill:white;");
             formItem.getChildren().add(input);
 
             formItemList.add(formItem);
             inputContainer.getChildren().add(formItem);
-        });
+        }
 
         // Create startButton
         formButton = new Button();
