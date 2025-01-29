@@ -4,7 +4,7 @@ import animal.Animal;
 import area.Area;
 
 import area.Plains;
-import chart.Plot;
+import stats.Plot;
 import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
 import utils.ConfigHandler;

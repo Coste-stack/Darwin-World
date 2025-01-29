@@ -3,7 +3,6 @@ import animal.Animal;
 import area.Point;
 import board.Board;
 import board.BoardView;
-import chart.Plot;
 
 import javafx.application.Platform;
 import org.junit.jupiter.api.BeforeAll;

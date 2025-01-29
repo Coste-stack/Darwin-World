@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalHandler {
+
     private final Board board;
     private final BoardView boardView;
     List<Animal> animalList;

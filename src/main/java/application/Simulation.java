@@ -3,14 +3,15 @@ package application;
 import animal.AnimalHandler;
 import area.Area;
 import area.Grassfield;
-import area.Plains;
 import area.Point;
 import area.pole.NorthPole;
 import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
-import chart.Plot;
+import stats.Plot;
 import javafx.geometry.Insets;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import utils.ConfigHandler;
 
 import javafx.scene.layout.StackPane;
@@ -22,12 +23,16 @@ import javafx.util.Duration;
 import javafx.animation.KeyFrame;
 
 public class Simulation {
-    private Board board;
-    private BoardView boardView;
+    private final Board board;
     private AnimalHandler animalHandler;
+    private final Statistics statistics;
+    private BoardView boardView;
     private final StackPane simulationView;
 
     public Simulation() {
+        this.board = new Board();
+        this.board.addPlot(new Plot());
+        this.statistics = new Statistics();
         this.simulationView = this.createView();
     }
 
@@ -36,9 +41,6 @@ public class Simulation {
     }
 
     private StackPane createView() {
-        board = new Board();
-        board.addPlot(new Plot());
-
         // Create the area.pole.Pole at the top and bottom
         Area NorthPole = new NorthPole(null, null).getArea();
         Area SouthPole = new SouthPole(null, null).getArea();
@@ -66,15 +68,19 @@ public class Simulation {
         } else {
             plotContainer = new StackPane();
         }
-        plotContainer.setPadding(new Insets(10, 0, 10,0));
+
+        // Put statistics related objects to a container
+        VBox statContainer = new VBox();
+        statContainer.setPadding(new Insets(10, 10, 10,10));
+        statContainer.getChildren().addAll(plotContainer, this.statistics.getView());
 
         // Create a scene
         HBox root = new HBox();
         root.setStyle("-fx-background-color: #282A3A");
-        root.getChildren().addAll(plotContainer, boardContainer);
+        root.getChildren().addAll(statContainer, boardContainer);
 
         // Make both components scalable
-        HBox.setHgrow(plotContainer, Priority.ALWAYS);
+        HBox.setHgrow(statContainer, Priority.ALWAYS);
         HBox.setHgrow(boardContainer, Priority.ALWAYS);
 
         // Create animals
@@ -87,16 +93,18 @@ public class Simulation {
     }
 
     public void run() {
-        board.setFoodRandomly();
-        animalHandler.runTurn();
-        boardView.refreshBoard();
+        runOnce();
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
-            board.setFoodRandomly();
-            animalHandler.runTurn();
-            boardView.refreshBoard();
+            runOnce();
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
 
+    private void runOnce() {
+        board.setFoodRandomly();
+        animalHandler.runTurn();
+        boardView.refreshBoard();
+        statistics.incrementIteration();
+    }
 }

@@ -1,4 +1,4 @@
-package chart;
+package stats;
 
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
