@@ -11,14 +11,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/application/Simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/application/Simulation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/application/Statistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/application/Statistics.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/Statistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/StatisticsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/StatisticsView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,6 +269,7 @@
       <workItem from="1738185166534" duration="3290000" />
       <workItem from="1738247937439" duration="2395000" />
       <workItem from="1738251242325" duration="1803000" />
+      <workItem from="1738278433491" duration="1003000" />
     </task>
     <servers />
   </component>

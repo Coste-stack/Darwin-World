@@ -8,10 +8,16 @@ import area.pole.NorthPole;
 import area.pole.SouthPole;
 import board.Board;
 import board.BoardView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import stats.Plot;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import utils.ConfigHandler;
 
 import javafx.scene.layout.StackPane;
@@ -24,10 +30,11 @@ import javafx.animation.KeyFrame;
 
 public class Simulation {
     private final Board board;
+    private BoardView boardView;
     private AnimalHandler animalHandler;
     private final Statistics statistics;
-    private BoardView boardView;
     private final StackPane simulationView;
+    private Timeline timeline;
 
     public Simulation() {
         this.board = new Board();
@@ -69,10 +76,24 @@ public class Simulation {
             plotContainer = new StackPane();
         }
 
+        // Get text statistics
+        StackPane statisticsView = this.statistics.getView();
+
+        // Create stackpane to manipulate simulation state
+        StackPane simManipView = new StackPane();
+
+        Button simStateButton = getSimStateButton();
+
+        simManipView.getChildren().add(simStateButton);
+
+        // Put elements into bottom statistics container
+        HBox bottomStatistics = new HBox();
+        bottomStatistics.getChildren().addAll(statisticsView, simManipView);
+
         // Put statistics related objects to a container
         VBox statContainer = new VBox(20);
         statContainer.setPadding(new Insets(10, 10, 10,10));
-        statContainer.getChildren().addAll(plotContainer, this.statistics.getView());
+        statContainer.getChildren().addAll(plotContainer, bottomStatistics);
 
         // Create a scene
         HBox root = new HBox();
@@ -92,13 +113,50 @@ public class Simulation {
         return new StackPane(root);
     }
 
+    private Button getSimStateButton() {
+        Button simStateButton = new Button("Stop");
+        simStateButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    if (timeline == null) {
+                        throw new Exception("Timeline is null");
+                    }
+                    switch (timeline.getStatus()) {
+                        case RUNNING:
+                            timeline.pause();
+                            simStateButton.setText("Resume");
+                            break;
+                        case PAUSED:
+                            timeline.play();
+                            simStateButton.setText("Stop");
+                            break;
+                        case STOPPED:
+                            timeline.playFromStart();
+                            simStateButton.setText("Stop");
+                            break;
+                        default:
+                            throw new Exception("Unknown simulation status");
+                    }
+                } catch (Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText(e.getMessage());
+                    alert.show();
+                }
+            }
+        });
+        return simStateButton;
+    }
+
     public void run() {
         runOnce();
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+        this.timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
             runOnce();
         }));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        this.timeline.setCycleCount(Animation.INDEFINITE);
+        this.timeline.play();
     }
 
     private void runOnce() {
