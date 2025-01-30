@@ -36,10 +36,6 @@ public class Statistics {
         return statisticsView.getView();
     }
 
-    public Map<String, Integer> getStatisticsMap() {
-        return new HashMap<>(statisticsMap);
-    }
-
     public void incrementIteration() {
         this.iteration++;
         this.updateData();

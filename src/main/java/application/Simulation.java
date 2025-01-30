@@ -70,7 +70,7 @@ public class Simulation {
         }
 
         // Put statistics related objects to a container
-        VBox statContainer = new VBox();
+        VBox statContainer = new VBox(20);
         statContainer.setPadding(new Insets(10, 10, 10,10));
         statContainer.getChildren().addAll(plotContainer, this.statistics.getView());
 
