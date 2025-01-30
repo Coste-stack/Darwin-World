@@ -1,11 +1,17 @@
 package application;
 
+import animal.Animal;
+import board.Board;
+import board.Tile;
 import javafx.scene.layout.StackPane;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Statistics {
+    private final Board board;
     private int iteration;
     private final Map<String, Integer> statisticsMap;
     private int animalAmount;
@@ -14,7 +20,8 @@ public class Statistics {
     private int avgLifespan;
     private final StatisticsView statisticsView;
 
-    public Statistics() {
+    public Statistics(Board board) {
+        this.board = board;
         this.iteration = 0;
         this.statisticsMap = new HashMap<>();
         this.animalAmount = 0;
@@ -29,6 +36,56 @@ public class Statistics {
         return statisticsView.getView();
     }
 
+    public Map<String, Integer> getStatisticsMap() {
+        return new HashMap<>(statisticsMap);
+    }
+
+    public void incrementIteration() {
+        this.iteration++;
+        this.updateData();
+        this.updateStatisticsMap();
+    }
+
+    public void updateData() {
+        // Change all map values to 0
+        Map<String, Integer> tempMap = new HashMap<>(statisticsMap);
+        tempMap.forEach((key, value) -> tempMap.put(key, 0));
+
+        // Collect the new data from board
+        List<Integer> energyList = new ArrayList<>();
+        List<Integer> lifespanList = new ArrayList<>();
+        for (int x = 0; x < board.getWidth(); x++) {
+            for (int y = 0; y < board.getHeight(); y++) {
+                Tile tile = board.getBoardMatrix()[x][y];
+                // Increment foodAmount value
+                if (tile.hasFood()) {
+                    tempMap.put("Food amount", tempMap.get("Food amount") + 1);
+                }
+                // Get animal data
+                List<Animal> animalList = tile.getAnimalList();
+                // Get animalAmount
+                tempMap.put("Animal amount", tempMap.get("Animal amount") + animalList.size());
+                // Get animal energy and age
+                for (Animal animal : animalList) {
+                    energyList.add(animal.getEnergy());
+                    lifespanList.add(animal.getAge());
+                }
+            }
+        }
+        animalAmount = tempMap.get("Animal amount");
+        foodAmount = tempMap.get("Food amount");
+
+        // Get avgEnergy and avgLifespan
+        int energySum = energyList
+                .stream()
+                .reduce(0, Integer::sum);
+        int lifespanSum = lifespanList
+                .stream()
+                .reduce(0, Integer::sum);
+        avgEnergy = energySum/energyList.size();
+        avgLifespan = lifespanSum/lifespanList.size();
+    }
+
     private void updateStatisticsMap() {
         statisticsMap.put("Iteration", iteration);
         statisticsMap.put("Animal amount", animalAmount);
@@ -38,50 +95,6 @@ public class Statistics {
         if (this.statisticsView != null) {
             this.statisticsView.updateStatisticsView(statisticsMap);
         }
-    }
-
-    public Map<String, Integer> getStatisticsMap() {
-        return new HashMap<>(statisticsMap);
-    }
-
-    public void incrementIteration() {
-        iteration++;
-        updateStatisticsMap();
-    }
-    public int getIteration() {
-        return iteration;
-    }
-
-    public int getAnimalAmount() {
-        return animalAmount;
-    }
-    public void setAnimalAmount(int animalAmount) {
-        this.animalAmount = animalAmount;
-        updateStatisticsMap();
-    }
-
-    public int getFoodAmount() {
-        return foodAmount;
-    }
-    public void setFoodAmount(int foodAmount) {
-        this.foodAmount = foodAmount;
-        updateStatisticsMap();
-    }
-
-    public int getAvgEnergy() {
-        return avgEnergy;
-    }
-    public void setAvgEnergy(int avgEnergy) {
-        this.avgEnergy = avgEnergy;
-        updateStatisticsMap();
-    }
-
-    public int getAvgLifespan() {
-        return avgLifespan;
-    }
-    public void setAvgLifespan(int avgLifespan) {
-        this.avgLifespan = avgLifespan;
-        updateStatisticsMap();
     }
 
     @Override

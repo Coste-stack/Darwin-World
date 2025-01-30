@@ -32,7 +32,7 @@ public class Simulation {
     public Simulation() {
         this.board = new Board();
         this.board.addPlot(new Plot());
-        this.statistics = new Statistics();
+        this.statistics = new Statistics(board);
         this.simulationView = this.createView();
     }
 
