@@ -3,6 +3,7 @@ package application;
 import animal.Animal;
 import board.Board;
 import board.Tile;
+import javafx.animation.Timeline;
 import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Statistics {
+public class SimulationMenu {
     private final Board board;
     private int iteration;
     private final Map<String, Integer> statisticsMap;
@@ -18,9 +19,9 @@ public class Statistics {
     private int foodAmount;
     private int avgEnergy;
     private int avgLifespan;
-    private final StatisticsView statisticsView;
+    private final SimulationMenuView simulationMenuView;
 
-    public Statistics(Board board) {
+    public SimulationMenu(Board board, Timeline timeline) {
         this.board = board;
         this.iteration = 0;
         this.statisticsMap = new HashMap<>();
@@ -29,11 +30,11 @@ public class Statistics {
         this.avgEnergy = 0;
         this.avgLifespan = 0;
         updateStatisticsMap();
-        this.statisticsView = new StatisticsView(statisticsMap);
+        this.simulationMenuView = new SimulationMenuView(statisticsMap, timeline);
     }
 
     public StackPane getView() {
-        return statisticsView.getView();
+        return simulationMenuView.getView();
     }
 
     public void incrementIteration() {
@@ -88,8 +89,8 @@ public class Statistics {
         statisticsMap.put("Food amount", foodAmount);
         statisticsMap.put("Average energy", avgEnergy);
         statisticsMap.put("Average lifespan", avgLifespan);
-        if (this.statisticsView != null) {
-            this.statisticsView.updateStatisticsView(statisticsMap);
+        if (this.simulationMenuView != null) {
+            this.simulationMenuView.updateStatisticsView(statisticsMap);
         }
     }
 
